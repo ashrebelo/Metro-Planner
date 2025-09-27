@@ -2,8 +2,19 @@
 
 Express + React app
 
-Description: (briefly describe what the app does)
-
+Description: 
+- Metro trip planner
+    - select station
+        - Start Station: (can be any station)
+        - End Station: (only station on the line)
+    - Once a line is picked
+        - Shows all the stations along the line
+        - Displays a map with the line of the trip and puts the point for the stations (map code already there)
+    - When selecting a point on the map
+        - description of the station (from api)
+        - highlight the station in the section above
+- if reading the file fails -> don't start listenser
+     
 ## Structure
 
 There are two directories in the __root__ of the project.
