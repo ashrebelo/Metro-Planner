@@ -1,5 +1,5 @@
 import Block from './Block';
-import './Station.css';
+import './Stations.css';
 
 function Station({station, color}) {
   return (

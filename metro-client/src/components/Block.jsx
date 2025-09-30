@@ -1,4 +1,4 @@
-import './Block.css';
+import './Stations.css';
 
 function Block({color}) {
   return (
