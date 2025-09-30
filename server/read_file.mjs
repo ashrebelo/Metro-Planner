@@ -20,6 +20,8 @@ export async function readGeoJSON() {
   return stmData;
 }
 
-function getStation() {
-
+export function getStations() {
+  const routeIds = ['1', '2', '4', '5'];
+  return stmData.filter(value => routeIds.includes(value.properties.route_id));
 }
+
