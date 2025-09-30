@@ -1,0 +1,22 @@
+.green {
+    background-color: green;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.orange {
+    background-color: orange;
+}
+
+#block {
+    border: 1px solid black;
+    padding: 1em;
+    width: 5px;
+    height: 5px;
+}
