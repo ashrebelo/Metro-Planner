@@ -8,6 +8,14 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.listen(port, () => {
-  console.log(`Example app app listening at http://localhost:${port}`);
-});
+async function startServer() {
+  try {
+    const stmData = await readGeoJSON();
+    app.listen(port, () => {
+      console.log(`Example app app listening at http://localhost:${port}`);
+    });
+  }catch(error) {
+    console.error('Read Fail, Server End', error);
+  }
+}
+
