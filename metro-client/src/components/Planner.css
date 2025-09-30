@@ -1,0 +1,9 @@
+#trip-planner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid blue;
+    padding: 1em;
+    border-radius: 15px;
+    margin: 1em;
+}

@@ -1,11 +1,24 @@
+import './Planner.css';
 
 function Planner() {
   return (
     <section id="trip-planner">
       <h1>Metro Trip Planner</h1>
       <h2>Select Start and End Stations</h2>
+      <div>
+        <label htmlFor="start-stations">Start Station:</label>
+        <select name="start-stations">
+          <option>-- Select Start --</option>
+        </select>
+      </div>
+      <div>
+        <label htmlFor="end-stations">End Station:</label>
+        <select name="end-stations">
+          <option>-- Select End --</option>
+        </select>
+      </div>
     </section>
   );
 }
 
-Planner();
+export default Planner;
