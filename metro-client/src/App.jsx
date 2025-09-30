@@ -7,6 +7,8 @@ function App() {
   const color = colors[routeId - 1];
   return (
     <div className="App">
+      <Planner />
+      <Stations stations={stations} color={color}/>
       <MapExample />
     </div>
   );
