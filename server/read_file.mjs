@@ -29,3 +29,12 @@ export function getRoute(routeId) {
   return stmData.filter(value => value.properties.route_id === routeId);
 }
 
+//usused for testing
+//REMOVE BEFORE SUBMISSION 
+async function main() {
+  await readGeoJSON();
+  const stations = getStations();
+  console.log(stations.length);
+}
+
+main();
