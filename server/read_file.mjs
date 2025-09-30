@@ -1,8 +1,7 @@
-import { parse } from 'csv-parse/sync';
-import path from 'path';
 import * as fs from 'node:fs/promises';
+import path from 'path';
 
-const filePath = 'data/stm_arrets_sig.geojson';
+const fileName = 'stm_arrets_sig.geojson';
 
 let stmData = [];
 
