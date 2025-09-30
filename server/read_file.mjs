@@ -37,4 +37,4 @@ async function main() {
   console.log(stations.length);
 }
 
-main();
+// main();
