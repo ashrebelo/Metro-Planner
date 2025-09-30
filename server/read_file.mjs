@@ -25,3 +25,7 @@ export function getStations() {
   return stmData.filter(value => routeIds.includes(value.properties.route_id));
 }
 
+export function getRoute(routeId) {
+  return stmData.filter(value => value.properties.route_id === routeId);
+}
+
