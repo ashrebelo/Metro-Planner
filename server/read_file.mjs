@@ -31,10 +31,10 @@ export function getRoute(routeId) {
 
 //usused for testing
 //REMOVE BEFORE SUBMISSION 
-async function main() {
-  await readGeoJSON();
-  const stations = getStations();
-  console.log(stations.length);
-}
+// async function main() {
+//   await readGeoJSON();
+//   const stations = getStations();
+//   console.log(stations.length);
+// }
 
 // main();
