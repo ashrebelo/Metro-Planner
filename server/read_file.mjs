@@ -32,6 +32,12 @@ export function getSationsOnLine(routeId) {
   if(stmData.length !== 0) {
   return stmData.filter(value => value.properties.route_id === routeId);
 }
+  return []
+}
+
+export function getRoute(start_station, end_station) {
+
+}
 
 //usused for testing
 //REMOVE BEFORE SUBMISSION 
