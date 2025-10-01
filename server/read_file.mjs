@@ -22,16 +22,16 @@ export async function readGeoJSON() {
 
 export function getStations() {
   if(stmData.length !== 0) {
-  const routeIds = ['1', '2', '4', '5'];
-  return stmData.filter(value => routeIds.includes(value.properties.route_id));
-}
+    const routeIds = ['1', '2', '4', '5'];
+    return stmData.filter(value => routeIds.includes(value.properties.route_id));
+  }
   return [];
 }
 
 export function getSationsOnLine(routeId) {
   if(stmData.length !== 0) {
-  return stmData.filter(value => value.properties.route_id === routeId);
-}
+    return stmData.filter(value => value.properties.route_id === routeId);
+  }
   return []
 }
 
