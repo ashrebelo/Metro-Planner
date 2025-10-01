@@ -1,5 +1,5 @@
 import express from 'express';
-import { readGeoJSON, getStations, getRoute } from './read_file.mjs';
+import { readGeoJSON, getStations, getSationsOnLine, getRoute } from './read_file.mjs';
 
 const app = express();
 const port = 3000;
@@ -8,6 +8,20 @@ const port = 3000;
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
+
+app.get('/start', (res) => {
+  res.send(getStations);
+})
+
+app.get('/end/:route_id', (req, res) => {
+  const { route_id } = req.query;
+  res.send(getSationsOnLine(route_id));
+})
+
+app.get('/route/:start_station/:end_station', (req,res) => {
+  const {start_station, end_station } = req.query;
+  res.send(getRoute(start_station, end_station));
+})
 
 async function startServer() {
   try {
