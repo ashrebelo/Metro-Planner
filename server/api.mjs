@@ -3,6 +3,7 @@ import { readGeoJSON, getStations, getSationsOnLine, getRoute } from './read_fil
 
 const app = express();
 const port = 3000;
+let server;
 
 //Remove this test route
 app.get('/', (req, res) => {
