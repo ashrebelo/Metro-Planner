@@ -36,7 +36,20 @@ export function getSationsOnLine(routeId) {
 }
 
 export function getRoute(start_station, end_station) {
-
+  if(stmData.lenght === 0) {
+    return []
+  }
+  const listOfStations = getStationsOnLine(start_station.properties.routeId);
+  let startIndex = 0;
+  let endIndex = listOfStations.length
+  if(start_station.properties.stop_code < end_station.properties.stop_code) {
+    startIndex = listOfStations.indexOf(start_station);
+    endIndex = listOfStations.indexOf(end_station);
+  }else {
+    startIndex = listOfStations.indexOf(end_station);
+    endIndex = listOfStations.indexOf(start_station);
+  }
+  return listOfStations.slice(startIndex, endIndex);
 }
 
 //usused for testing
