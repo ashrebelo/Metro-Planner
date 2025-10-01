@@ -26,11 +26,18 @@ app.get('/route/:start_station/:end_station', (req,res) => {
 async function startServer() {
   try {
     const stmData = await readGeoJSON();
-    app.listen(port, () => {
+    server = app.listen(port, () => {
       console.log(`Example app app listening at http://localhost:${port}`);
     });
   }catch(error) {
     console.error('Read Fail, Server End', error);
   }
 }
+
+process.on('SIGTERM', () => {
+  console.debug('SIGTERM signal reveived: closing HTTP server')
+  server.close(() => {
+    console.debug('HTTP server closed')
+  })
+})
 
