@@ -13,6 +13,10 @@ const colors = ['green', 'orange', 'null', 'yellow', 'blue'];
 
 function App() {
   const [backendData, setBackendData] = useState([{}]);
+  const [tripRoute, setTripRoute] = useState([]);
+  const [startStation, setStartStation] = useState('');
+  const [endStation, setEndStation] = useState('');
+
   useEffect(() => {
     fetch('/api/s').then(
       res => res.json()
@@ -26,7 +30,10 @@ function App() {
   const color = colors[routeId - 1];
   return (
     <div className="App">
-      <Planner stations={backendData}/>
+      <Planner stations={backendData}
+        startStation={startStation}
+        setStartStation={setStartStation} 
+        setEndStation={setEndStation}/>
       <Stations stations={stations} color={color}/>
       <MapExample />
     </div>
