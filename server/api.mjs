@@ -10,17 +10,17 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.get('/s', (req, res) => {
+app.get('/api/s', (req, res) => {
   const result = getStations();
   res.send(result);
 });
 
-app.get('/end/:route_id', (req, res) => {
+app.get('/api/end/:route_id', (req, res) => {
   const { route_id } = req.query;
   res.send(getSationsOnLine(route_id));
 });
 
-app.get('/route/:start_station/:end_station', (req,res) => {
+app.get('/api/route/:start_station/:end_station', (req,res) => {
   const {start_station, end_station } = req.query;
   res.send(getRoute(start_station, end_station));
 });
