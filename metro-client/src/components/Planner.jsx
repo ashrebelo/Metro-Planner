@@ -22,7 +22,10 @@ function Planner({stations, startStation, setStartStation, endStation, setEndSta
       <h2>Select Start and End Stations</h2>
       <div>
         <label htmlFor="start-stations">Start Station:</label>
-        <select name="start-stations">
+        <select 
+          name="start-stations"
+          value={startStation || ''}
+          onChange={handleStartChange}>
           <option>-- Select Start --</option>
           {stations.map((station) => {
             <option>{station.stop_name}</option>;
@@ -31,7 +34,10 @@ function Planner({stations, startStation, setStartStation, endStation, setEndSta
       </div>
       <div>
         <label htmlFor="end-stations">End Station:</label>
-        <select name="end-stations">
+        <select 
+          name="end-stations"
+          value={endStation || ''}
+          onChange={handleEndStation}>
           <option>-- Select End --</option>
         </select>
       </div>
