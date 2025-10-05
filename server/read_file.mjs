@@ -66,10 +66,10 @@ export function getRoute(start_station, end_station) {
   if(stations.lenght === 0) {
     return []
   }
-  const listOfStations = getStationsOnLine(start_station.properties.routeId);
+  const listOfStations = getStationsOnLine(start_station.routeId);
   let startIndex = 0;
   let endIndex = listOfStations.length
-  if(start_station.properties.stop_code < end_station.properties.stop_code) {
+  if(start_station.stop_code < end_station.stop_code) {
     startIndex = listOfStations.indexOf(start_station);
     endIndex = listOfStations.indexOf(end_station);
   }else {
