@@ -18,7 +18,7 @@ app.get('/s', (req, res) => {
 app.get('/end/:route_id', (req, res) => {
   const { route_id } = req.query;
   res.send(getSationsOnLine(route_id));
-})
+});
 
 app.get('/route/:start_station/:end_station', (req,res) => {
   const {start_station, end_station } = req.query;
