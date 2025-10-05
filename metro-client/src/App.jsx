@@ -35,7 +35,6 @@ function App() {
         setStartStation={setStartStation} 
         setEndStation={setEndStation}/>
       <Stations stations={stations} color={color}/>
-      <MapExample />
     </div>
   );
 }
