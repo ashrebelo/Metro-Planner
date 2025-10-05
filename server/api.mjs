@@ -23,7 +23,7 @@ app.get('/end/:route_id', (req, res) => {
 app.get('/route/:start_station/:end_station', (req,res) => {
   const {start_station, end_station } = req.query;
   res.send(getRoute(start_station, end_station));
-})
+});
 
 async function startServer() {
   try {
