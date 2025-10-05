@@ -28,6 +28,9 @@ app.get('/route/:start_station/:end_station', (req,res) => {
 async function startServer() {
   try {
     const stmData = await readGeoJSON();
+    if(!stmData || stmData.length == 0) {
+      process.exit(1);
+    }
     server = app.listen(port, () => {
       console.log(`Example app app listening at http://localhost:${port}`);
     });
