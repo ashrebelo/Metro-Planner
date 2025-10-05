@@ -9,12 +9,12 @@ let stations = [];
 
 class StationItem {
   constructor(stop_code, stop_id, stop_name, stop_url, route_id, coordinates) {
-    code = stop_code,
-    id = stop_id,
-    stop_name = stop_name
-    url = stop_url,
-    route_id = route_id,
-    coor = coordinates
+    this.code = stop_code,
+    this.id = stop_id,
+    this.stop_name = stop_name
+    this.url = stop_url,
+    this.route_id = route_id,
+    this.coor = coordinates
   }
 }
 
