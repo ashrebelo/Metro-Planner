@@ -1,6 +1,6 @@
 import './Planner.css';
 
-function Planner() {
+function Planner({stations}) {
   return (
     <section id="trip-planner">
       <h1>Metro Trip Planner</h1>
