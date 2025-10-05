@@ -57,7 +57,7 @@ export function getStations() {
 
 export function getSationsOnLine(routeId) {
   if(stations.length !== 0) {
-    return stations.filter(value => value.properties.route_id === routeId);
+    return stations.filter(value => value.route_id === routeId);
   }
   return []
 }
