@@ -14,7 +14,7 @@ const colors = ['green', 'orange', 'null', 'yellow', 'blue'];
 function App() {
   const [backendData, setBackendData] = useState([{}]);
   useEffect(() => {
-    fetch('localhost:3000/start').then(
+    fetch('/api/s').then(
       res => res.json()
     ).then(
       data => {
