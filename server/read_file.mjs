@@ -21,12 +21,35 @@ export async function readGeoJSON() {
 }
 
 export function getStations() {
-  const routeIds = ['1', '2', '4', '5'];
-  return stmData.filter(value => routeIds.includes(value.properties.route_id));
+  if(stmData.length !== 0) {
+    const routeIds = ['1', '2', '4', '5'];
+    return stmData.filter(value => routeIds.includes(value.properties.route_id));
+  }
+  return [];
 }
 
-export function getRoute(routeId) {
-  return stmData.filter(value => value.properties.route_id === routeId);
+export function getSationsOnLine(routeId) {
+  if(stmData.length !== 0) {
+    return stmData.filter(value => value.properties.route_id === routeId);
+  }
+  return []
+}
+
+export function getRoute(start_station, end_station) {
+  if(stmData.lenght === 0) {
+    return []
+  }
+  const listOfStations = getStationsOnLine(start_station.properties.routeId);
+  let startIndex = 0;
+  let endIndex = listOfStations.length
+  if(start_station.properties.stop_code < end_station.properties.stop_code) {
+    startIndex = listOfStations.indexOf(start_station);
+    endIndex = listOfStations.indexOf(end_station);
+  }else {
+    startIndex = listOfStations.indexOf(end_station);
+    endIndex = listOfStations.indexOf(start_station);
+  }
+  return listOfStations.slice(startIndex, endIndex);
 }
 
 //usused for testing
