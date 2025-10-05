@@ -28,7 +28,7 @@ function Planner({stations, startStation, setStartStation, endStation, setEndSta
           onChange={handleStartChange}>
           <option>-- Select Start --</option>
           {stations.map((station) => {
-            <option>{station.stop_name}</option>;
+            return <option key={station.id} value={station.stop_name}>{station.stop_name}</option>;
           })}
         </select>
       </div>
