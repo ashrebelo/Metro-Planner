@@ -1,4 +1,4 @@
-//import { useState } from "react";
+import { useState, useEffect } from 'react';
 import './App.css';
 import MapExample from './components/MapExample';
 import Planner from './components/Planner';
@@ -12,11 +12,21 @@ const stations = [
 const colors = ['green', 'orange', 'null', 'yellow', 'blue'];
 
 function App() {
+  const [backendData, setBackendData] = useState([{}]);
+  useEffect(() => {
+    fetch('localhost:3000/start').then(
+      res => res.json()
+    ).then(
+      data => {
+        setBackendData(data);
+      }
+    );
+  }, []);
   const routeId = parseInt(stations[0].route_id, 10);
   const color = colors[routeId - 1];
   return (
     <div className="App">
-      <Planner />
+      <Planner stations={backendData}/>
       <Stations stations={stations} color={color}/>
       <MapExample />
     </div>
