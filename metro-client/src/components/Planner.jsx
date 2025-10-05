@@ -39,6 +39,9 @@ function Planner({stations, startStation, setStartStation, endStation, setEndSta
           value={endStation || ''}
           onChange={handleEndStation}>
           <option>-- Select End --</option>
+          {routeStation.map((station) => {
+            return <option key={station.id} value={station.stop_name}>{station.stop_name}</option>;
+          })}
         </select>
       </div>
     </section>
