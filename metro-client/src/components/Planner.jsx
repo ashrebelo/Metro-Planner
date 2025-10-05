@@ -9,6 +9,9 @@ function Planner() {
         <label htmlFor="start-stations">Start Station:</label>
         <select name="start-stations">
           <option>-- Select Start --</option>
+          {stations.map((station) => {
+            <option>{station.stop_name}</option>;
+          })}
         </select>
       </div>
       <div>
