@@ -1,6 +1,21 @@
 import './Planner.css';
 
-function Planner({stations}) {
+function Planner({stations, startStation, setStartStation, endStation, setEndStation}) {
+  const [routeStation, setRouteStation] = useState([]);
+  
+
+  async function handleStartChange(event) {
+    const selectedName = event.target.value;
+    setStartStation(selectedName);
+    const res = await fetch(`/api/end/${startStation.id}`);
+    const data = await res.json();
+    setRouteStation(data);
+  }
+
+  function handleEndStation(event) {
+    setEndStation(event.target.value);
+  }
+
   return (
     <section id="trip-planner">
       <h1>Metro Trip Planner</h1>
