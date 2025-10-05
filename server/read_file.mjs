@@ -5,6 +5,19 @@ const fileName = 'stm_arrets_sig.geojson';
 
 let stmData = [];
 
+let stations = [];
+
+class StationItem {
+  constructor(stop_code, stop_id, stop_name, stop_url, route_id, coordinates) {
+    code = stop_code,
+    id = stop_id,
+    stop_name = stop_name
+    url = stop_url,
+    route_id = route_id,
+    coor = coordinates
+  }
+}
+
 export async function readGeoJSON() {
   if(stmData.length === 0) {
     try {
@@ -12,6 +25,7 @@ export async function readGeoJSON() {
       const content = await fs.readFile(filePath, 'utf8');
       const geoData = await JSON.parse(content);
       stmData =  geoData.features || geoData;
+      createStationObjects()
     }catch(error) {
       console.error('Failed File Reading', error);
       stmData = [];
@@ -20,23 +34,36 @@ export async function readGeoJSON() {
   return stmData;
 }
 
+function createStationObjects() {
+  stmData.map((data) => {
+    stations.push(new StationItem(
+      data.properties.stop_code,
+      data.properties.stop_id,
+      data.properties.stop_name,
+      data.properties.stop_url,
+      data.properties.route_id,
+      data.geometry.coordinates
+    ))
+  })
+}
+
 export function getStations() {
-  if(stmData.length !== 0) {
+  if(stations.length !== 0) {
     const routeIds = ['1', '2', '4', '5'];
-    return stmData.filter(value => routeIds.includes(value.properties.route_id));
+    return stations.filter(value => routeIds.includes(value.properties.route_id));
   }
   return [];
 }
 
 export function getSationsOnLine(routeId) {
-  if(stmData.length !== 0) {
-    return stmData.filter(value => value.properties.route_id === routeId);
+  if(stations.length !== 0) {
+    return stations.filter(value => value.properties.route_id === routeId);
   }
   return []
 }
 
 export function getRoute(start_station, end_station) {
-  if(stmData.lenght === 0) {
+  if(stations.lenght === 0) {
     return []
   }
   const listOfStations = getStationsOnLine(start_station.properties.routeId);
