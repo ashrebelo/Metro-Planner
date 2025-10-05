@@ -10,9 +10,10 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.get('/start', (res) => {
-  res.send(getStations);
-})
+app.get('/s', (req, res) => {
+  const result = getStations();
+  res.send(result);
+});
 
 app.get('/end/:route_id', (req, res) => {
   const { route_id } = req.query;
