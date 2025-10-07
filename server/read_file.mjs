@@ -58,19 +58,28 @@ export function getStationsOnLine(routeId) {
   return stations.filter(value => String(value.route_id) === String(routeId));
 }
 
-export function getRoute(start_station, end_station) {
-  if(stations.lenght === 0) {
+export function getRoute(start_station_id, end_station_id) {
+  if(!stations || stations.lenght === 0) {
     return []
   }
-  const listOfStations = getStationsOnLine(start_station.routeId);
-  let startIndex = 0;
-  let endIndex = listOfStations.length
+  const listOfStations = getStationsOnLine(start_station_id);
+  if(!listOfStations || listOfStations.length === 0) {
+    return [];
+  }
+  const start_station = stations.find(s => s.id == start_station_id);
+  const end_station = stations.find(s => s.id == end_station_id);
+
+  if(!start_station || !end_station) {
+    return [];
+  }
+  
+  let startIndex, endIndex;
   if(start_station.stop_code < end_station.stop_code) {
-    startIndex = listOfStations.indexOf(start_station);
-    endIndex = listOfStations.indexOf(end_station);
+    startIndex = listOfStations.findIndex(s => s.id == start_station.id);
+    endIndex = listOfStations.indexOf(s => s.id == end_station.id) + 1;
   }else {
-    startIndex = listOfStations.indexOf(end_station);
-    endIndex = listOfStations.indexOf(start_station);
+    startIndex = listOfStations.findIndex(s => s.id == start_station.id);
+    endIndex = listOfStations.indexOf(s => s.id == end_station.id) + 1;
   }
   return listOfStations.slice(startIndex, endIndex);
 }
