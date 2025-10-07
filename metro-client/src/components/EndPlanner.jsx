@@ -8,6 +8,10 @@ function EndPlanner({endStation, setEndStation, routeStation, startStation}) {
     setEndStation(selectedStation);
   }
 
+  const filteredStations = routeStation.filter(
+    (s) => s.stop_name !== startStation
+  );
+
   return (
     <section id="trip-planner">
       <label htmlFor="end-stations">End Station:</label>
