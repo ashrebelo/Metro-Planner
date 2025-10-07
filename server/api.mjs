@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 
 app.get('/api/s', (req, res) => {
   const result = getStations();
-  res.send(result);
+  res.json(result);
 });
 
 app.get('/api/end/:route_id', (req, res) => {
