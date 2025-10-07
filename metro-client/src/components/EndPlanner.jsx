@@ -20,8 +20,8 @@ function EndPlanner({endStation, setEndStation, routeStation, startStation}) {
         value={endStation}
         onChange={handleEndStation}>
         <option>-- Select End --</option>
-        {routeStation.map((station) => {
-          return <option key={`${station.route_id}-${station.id}-${station.stop_name}`} 
+        {filteredStations.map((station, index) => {
+          return <option key={index} 
             value={station.stop_name}>
             {station.stop_name}
           </option>;
