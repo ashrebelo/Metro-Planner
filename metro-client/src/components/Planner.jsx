@@ -35,10 +35,12 @@ function Planner(
           })}
         </select>
       </div>
-      <EndPlanner 
+      {startStation && <EndPlanner 
         endStation={endStation} 
         setEndStation={setEndStation} 
-        routeStation={routeStation}/>
+        routeStation={routeStation}
+        startStation={startStation}
+        stations={stations}/>}
     </section>
   );
 }
