@@ -9,8 +9,8 @@ function Planner(
   
   async function handleStartChange(event) {
     const selectedName = event.target.value;
-    setStartStation(selectedName);
     const selectedStation = stations.find(st => st.stop_name === selectedName);
+    setStartStation(selectedStation);
     const res = await fetch(`/api/end/${selectedStation.route_id}`);
     const data = await res.json();
     setRouteStation(data);
