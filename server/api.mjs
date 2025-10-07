@@ -23,7 +23,7 @@ app.get('/api/end/:route_id', (req, res) => {
 
 app.get('/api/route/:start_station/:end_station', (req,res) => {
   const {start_station, end_station } = req.query;
-  res.send(getRoute(start_station, end_station));
+  res.json(getRoute(start_station, end_station));
 });
 
 async function startServer() {
