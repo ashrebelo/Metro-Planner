@@ -53,11 +53,9 @@ export function getStations() {
   return [];
 }
 
-export function getSationsOnLine(routeId) {
-  if(stations.length !== 0) {
-    return stations.filter(value => value.route_id === routeId);
-  }
-  return []
+export function getStationsOnLine(routeId) {
+  if(stations.length === 0) return [];
+  return stations.filter(value => String(value.route_id) === String(routeId));
 }
 
 export function getRoute(start_station, end_station) {
