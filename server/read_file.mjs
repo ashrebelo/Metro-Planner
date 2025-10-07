@@ -33,7 +33,7 @@ export async function readGeoJSON() {
 }
 
 function createStationObjects() {
-  stmData.map((data) => {
+  stmData.forEach((data) => {
     stations.push(new StationItem(
       data.properties.stop_code,
       data.properties.stop_id,
