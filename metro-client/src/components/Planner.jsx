@@ -2,10 +2,11 @@ import { useState } from 'react';
 import './Planner.css';
 import EndPlanner from './EndPlanner';
 
-function Planner({stations, startStation, setStartStation, endStation, setEndStation}) {
+function Planner(
+  {stations, startStation, setStartStation, endStation, setEndStation}
+) {
   const [routeStation, setRouteStation] = useState([]);
   
-
   async function handleStartChange(event) {
     const selectedName = event.target.value;
     setStartStation(selectedName);
@@ -15,7 +16,6 @@ function Planner({stations, startStation, setStartStation, endStation, setEndSta
     setRouteStation(data);
   }
   
-
   return (
     <section id="trip-planner">
       <h1>Metro Trip Planner</h1>
