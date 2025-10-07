@@ -9,14 +9,12 @@ function Planner({stations, startStation, setStartStation, endStation, setEndSta
   async function handleStartChange(event) {
     const selectedName = event.target.value;
     setStartStation(selectedName);
-    const res = await fetch(`/api/end/${startStation.id}`);
+    const selectedStation = stations.find(st => st.stop_name === selectedName);
+    const res = await fetch(`/api/end/${selectedStation.route_id}`);
     const data = await res.json();
     setRouteStation(data);
   }
-
-  function handleEndStation(event) {
-    setEndStation(event.target.value);
-  }
+  
 
   return (
     <section id="trip-planner">
