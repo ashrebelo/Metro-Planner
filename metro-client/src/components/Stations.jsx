@@ -4,7 +4,7 @@ import './Stations.css';
 function Stations({routeTrip, color}) {
   return (
     <section id="stations">
-      {stations.map((stat, index) =>
+      {routeTrip.map((stat, index) =>
         <Station station={stat} color={color} key={index} />
       )}
     </section>
