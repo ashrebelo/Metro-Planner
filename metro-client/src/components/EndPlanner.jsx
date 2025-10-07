@@ -1,6 +1,6 @@
 import './Planner.css';
 
-function EndPlanner({endStation, setEndStation, routeStation}) {
+function EndPlanner({endStation, setEndStation, routeStation, startStation}) {
 
   function handleEndStation(event) {
     setEndStation(event.target.value);
