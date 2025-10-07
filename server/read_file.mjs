@@ -79,7 +79,7 @@ export function getRoute(start_station, end_station) {
 //REMOVE BEFORE SUBMISSION 
 // async function main() {
 //   await readGeoJSON();
-//   const stations = getStations();
+//   const stations = getStationsOnLine("1");
 //   console.log(stations.length);
 // }
 
