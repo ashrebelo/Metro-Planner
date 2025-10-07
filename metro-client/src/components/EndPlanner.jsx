@@ -3,7 +3,9 @@ import './Planner.css';
 function EndPlanner({endStation, setEndStation, routeStation, startStation}) {
 
   function handleEndStation(event) {
-    setEndStation(event.target.value);
+    const selectedName = event.target.value;
+    const selectedStation = filteredStations.find(st => st.stop_name === selectedName);
+    setEndStation(selectedStation);
   }
 
   return (
