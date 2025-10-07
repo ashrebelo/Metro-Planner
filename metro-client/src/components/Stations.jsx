@@ -1,7 +1,7 @@
 import Station from './Station';
 import './Stations.css';
 
-function Stations({stations, color}) {
+function Stations({routeTrip, color}) {
   return (
     <section id="stations">
       {stations.map((stat, index) =>
