@@ -2,9 +2,7 @@ import * as fs from 'node:fs/promises';
 import path from 'path';
 
 const fileName = 'stm_arrets_sig.geojson';
-
 let stmData = [];
-
 let stations = [];
 
 class StationItem {
