@@ -49,4 +49,3 @@ process.on('SIGTERM', () => {
   })
 })
 startServer();
-
