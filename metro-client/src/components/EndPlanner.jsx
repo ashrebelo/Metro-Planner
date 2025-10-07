@@ -17,7 +17,7 @@ function EndPlanner({endStation, setEndStation, routeStation, startStation}) {
       <label htmlFor="end-stations">End Station:</label>
       <select 
         name="end-stations"
-        value={endStation || ''}
+        value={endStation}
         onChange={handleEndStation}>
         <option>-- Select End --</option>
         {routeStation.map((station) => {
