@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Planner.css';
+import EndPlanner from './EndPlanner';
 
 function Planner({stations, startStation, setStartStation, endStation, setEndStation}) {
   const [routeStation, setRouteStation] = useState([]);
