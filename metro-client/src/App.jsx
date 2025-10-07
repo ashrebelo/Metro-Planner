@@ -26,7 +26,7 @@ function App() {
       }
     );
   }, []);
-  const routeId = parseInt(stations[0].route_id, 10);
+  const routeId = parseInt(backendData[0].route_id, 10);
   const color = colors[routeId - 1];
   return (
     <div className="App">
