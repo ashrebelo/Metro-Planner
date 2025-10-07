@@ -20,6 +20,19 @@ function App() {
       }
     );
   }, []);
+
+  async function getRouteTrip() {
+    const res = await fetch(`/api/route/${startStation.id}/${endStation.id}`);
+    const data = await res.json();
+    setRouteTrip(data);
+  }
+
+  useEffect(() => {
+    if(startStation && endStation){
+      getRouteTrip();
+    }
+  }, [endStation]);
+
   const routeId = parseInt(backendData[0].route_id, 10);
   const color = colors[routeId - 1];
   return (
