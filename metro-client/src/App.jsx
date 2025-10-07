@@ -40,8 +40,9 @@ function App() {
       <Planner stations={backendData}
         startStation={startStation}
         setStartStation={setStartStation} 
-        setEndStation={setEndStation}/>
-      <Stations stations={stations} color={color}/>
+        setEndStation={setEndStation}
+        setRouteTrip={setRouteTrip}/>
+      {routeTrip && <TripRoute routeTrip={routeTrip} color={color}/>}
     </div>
   );
 }
