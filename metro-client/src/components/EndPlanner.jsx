@@ -13,7 +13,7 @@ function EndPlanner({endStation, setEndStation, routeStation, startStation}) {
   );
 
   return (
-    <section id="trip-planner">
+    <section>
       <label htmlFor="end-stations">End Station:</label>
       <select 
         name="end-stations"
