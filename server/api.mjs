@@ -16,9 +16,9 @@ app.get('/api/s', (req, res) => {
 });
 
 app.get('/api/end/:route_id', (req, res) => {
-  const { route_id } = req.query;
-  res.send(req.query);
-  //res.send(getSationsOnLine(route_id));
+  const { route_id } = req.params;
+  const result = getStationsOnLine(route_id);
+  res.json(result);
 });
 
 app.get('/api/route/:start_station/:end_station', (req,res) => {
