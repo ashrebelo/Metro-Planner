@@ -7,7 +7,7 @@ const colors = ['green', 'orange', 'null', 'yellow', 'blue'];
 
 function App() {
   const [backendData, setBackendData] = useState([{}]);
-  const [tripRoute, setTripRoute] = useState([]);
+  const [routeTrip, setRouteTrip] = useState([{}]);
   const [startStation, setStartStation] = useState('');
   const [endStation, setEndStation] = useState('');
 
