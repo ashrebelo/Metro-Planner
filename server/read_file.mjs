@@ -12,7 +12,7 @@ class StationItem {
     this.stop_name = stop_name
     this.url = stop_url,
     this.route_id = route_id,
-    this.coor = coordinates
+    this.coordinates = coordinates
   }
 }
 
