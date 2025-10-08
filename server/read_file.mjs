@@ -82,7 +82,8 @@ export function getRoute(start_station_id, end_station_id) {
     startIndex = listOfStations.findIndex(s => s.id == end_station.id);
     endIndex = listOfStations.findIndex(s => s.id == start_station.id) + 1;
   }
-  return listOfStations.slice(startIndex, endIndex);
+  const list = listOfStations.slice(startIndex, endIndex);
+  return list;
 }
 
 //usused for testing
