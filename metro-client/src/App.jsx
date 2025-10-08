@@ -33,8 +33,6 @@ function App() {
     const data = await res.json();
     setRouteTrip(data);
   }
-
-  
   return (
     <div className="App">
       <Planner stations={backendData}
