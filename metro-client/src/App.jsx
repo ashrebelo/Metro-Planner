@@ -37,8 +37,9 @@ function App() {
         startStation={startStation}
         setStartStation={setStartStation} 
         setEndStation={setEndStation}
-        setRouteTrip={setRouteTrip}/>
-      {routeTrip && <TripRoute routeTrip={routeTrip} color={color}/>}
+        setRouteTrip={setRouteTrip}
+        setDisplayRoute={setDisplayRoute}/>
+      {displayRoute && <TripRoute routeTrip={routeTrip} color={color}/>}
     </div>
   );
 }
