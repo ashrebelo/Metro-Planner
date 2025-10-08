@@ -18,12 +18,15 @@ export default function MetroMarkers({route, routeTrip, color}) {
   //beware, hardcoded!!!
   return (
     <>
-      <Marker position={route[0].coordinates} icon={customIcon} >
-        <Popup><p>A point</p></Popup>
-      </Marker>
-      <Marker position={route[1].coordinates} icon={customIcon} />
-      <Marker position={route[2].coordinates} icon={customIcon} />
-      <Polyline pathOptions={{color: route[0].color}} positions={points} />
+      {routeTrip.map((point, index) => {
+        <Marker 
+          position={[routeTrip[index].coordinates[1], routeTrip[index].coordinates[0]]}
+          icon={customIcon}>
+          <Popup>{point.stop_name}</Popup>
+        </Marker>;
+        points.push([routeTrip[index].coordinates[1], routeTrip[index].coordinates[0]]);
+      })}
+      <Polyline pathOptions={{color: color}} positions={points} />
     </>
   );
 }
