@@ -66,5 +66,4 @@ function Planner(
     </section>
   );
 }
-
 export default Planner;
