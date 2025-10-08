@@ -37,10 +37,7 @@ function App() {
     setRouteTrip(data);
   }
 
-  const [displayRoute, setDisplayRoute] = useState(false);
-
-  const routeId = parseInt(backendData[0].route_id, 10);
-  const color = colors[routeId - 1];
+  
   return (
     <div className="App">
       <Planner stations={backendData}
