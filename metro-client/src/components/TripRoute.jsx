@@ -1,4 +1,5 @@
 
+import MapExample from './MapExample';
 import Stations from './Stations';
 
 function TripRoute({routeTrip, color}) {
