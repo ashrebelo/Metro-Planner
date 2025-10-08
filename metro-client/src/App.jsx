@@ -27,11 +27,7 @@ function App() {
     setRouteTrip(data);
   }
 
-  useEffect(() => {
-    if(startStation && endStation){
-      getRouteTrip();
-    }
-  }, [endStation]);
+  const [displayRoute, setDisplayRoute] = useState(false);
 
   const routeId = parseInt(backendData[0].route_id, 10);
   const color = colors[routeId - 1];
