@@ -46,12 +46,23 @@ function Planner(
           })}
         </select>
       </div>
-      {startStation && <EndPlanner 
-        endStation={endStation} 
-        setEndStation={setEndStation} 
-        routeStation={routeStation}
-        startStation={startStation}
-        stations={stations}/>}
+      {endDisplay && 
+        <div>
+          <label htmlFor="end-stations">End Station:</label>
+          <select 
+            name="end-stations"
+            value={endStation}
+            onChange={handleEndStation}>
+            <option>-- Select End --</option>
+            {filteredStations.map((station, index) => {
+              return <option key={index} 
+                value={station.stop_name}>
+                {station.stop_name}
+              </option>;
+            })}
+          </select>
+        </div>
+      }
     </section>
   );
 }
