@@ -14,7 +14,18 @@ function Planner(
     const res = await fetch(`/api/end/${selectedStation.route_id}`);
     const data = await res.json();
     setRouteStation(data);
+    setEndDisplay(true);
   }
+  function handleEndStation(event) {
+    const selectedName = event.target.value;
+    const selectedStation = filteredStations.find(st => st.stop_name === selectedName);
+    setEndStation(selectedStation);
+    setDisplayRoute(true);
+  }
+
+  const filteredStations = routeStation.filter(
+    (s) => s.stop_name !== startStation
+  );
   
   return (
     <section id="trip-planner">
