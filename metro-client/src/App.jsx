@@ -32,7 +32,7 @@ function App() {
   }, [displayRoute]);
 
   async function getRouteTrip() {
-    const res = await fetch(`/api/route/${startStation.id}/${endStation.id}`);
+    const res = await fetch(`/api/routetrip/${startStation.id}/${endStation.id}`);
     const data = await res.json();
     setRouteTrip(data);
   }
