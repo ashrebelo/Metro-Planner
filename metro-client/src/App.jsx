@@ -10,6 +10,10 @@ function App() {
   const [routeTrip, setRouteTrip] = useState([{}]);
   const [startStation, setStartStation] = useState('');
   const [endStation, setEndStation] = useState('');
+  const [displayRoute, setDisplayRoute] = useState(false);
+
+  const routeId = parseInt(backendData[0].route_id, 10);
+  const color = colors[routeId - 1];
 
   useEffect(() => {
     fetch('/api/s').then(
