@@ -25,6 +25,12 @@ function App() {
     );
   }, []);
 
+  useEffect(() => {
+    if(displayRoute !== null) {
+      getRouteTrip();
+    }
+  }, [displayRoute]);
+
   async function getRouteTrip() {
     const res = await fetch(`/api/route/${startStation.id}/${endStation.id}`);
     const data = await res.json();
