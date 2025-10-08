@@ -14,6 +14,7 @@ function Planner(
     const res = await fetch(`/api/end/${selectedStation.route_id}`);
     const data = await res.json();
     setRouteStation(data);
+    setEndStation('');
     setEndDisplay(true);
   }
   function handleEndStation(event) {
