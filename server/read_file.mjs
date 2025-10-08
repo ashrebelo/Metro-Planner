@@ -62,24 +62,25 @@ export function getRoute(start_station_id, end_station_id) {
   if(!stations || stations.lenght === 0) {
     return []
   }
-  const listOfStations = getStationsOnLine(start_station_id);
-  if(!listOfStations || listOfStations.length === 0) {
-    return [];
-  }
   const start_station = stations.find(s => s.id == start_station_id);
   const end_station = stations.find(s => s.id == end_station_id);
 
   if(!start_station || !end_station) {
     return [];
   }
-  
+
+  const listOfStations = getStationsOnLine(start_station.route_id);
+  if(!listOfStations || listOfStations.length === 0) {
+    return [];
+  }
+
   let startIndex, endIndex;
-  if(start_station.stop_code < end_station.stop_code) {
+  if(start_station.code < end_station.code) {
     startIndex = listOfStations.findIndex(s => s.id == start_station.id);
-    endIndex = listOfStations.indexOf(s => s.id == end_station.id) + 1;
+    endIndex = listOfStations.findIndex(s => s.id == end_station.id) + 1;
   }else {
-    startIndex = listOfStations.findIndex(s => s.id == start_station.id);
-    endIndex = listOfStations.indexOf(s => s.id == end_station.id) + 1;
+    startIndex = listOfStations.findIndex(s => s.id == end_station.id);
+    endIndex = listOfStations.findIndex(s => s.id == start_station.id) + 1;
   }
   return listOfStations.slice(startIndex, endIndex);
 }
@@ -88,8 +89,8 @@ export function getRoute(start_station_id, end_station_id) {
 //REMOVE BEFORE SUBMISSION 
 // async function main() {
 //   await readGeoJSON();
-//   const stations = getStationsOnLine("1");
-//   console.log(stations.length);
+//   const route = getRoute("38", "43");
+//   console.log(route.length);
 // }
 
 // main();
