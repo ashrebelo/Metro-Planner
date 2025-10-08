@@ -35,7 +35,7 @@ function Planner(
         <label htmlFor="start-stations">Start Station:</label>
         <select 
           name="start-stations"
-          value={startStation || ''}
+          defaultValue={startStation || ''}
           onChange={handleStartChange}>
           <option>-- Select Start --</option>
           {stations.map((station) => {
