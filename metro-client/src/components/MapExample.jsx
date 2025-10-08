@@ -49,7 +49,8 @@ export default function MapExample({routeTrip, color}) {
           attribution={attribution}
           url={tileUrl}
         />
-        <MetroMarkers route={points}/> 
+        {console.log(routeTrip.length)}
+        {routeTrip.length > 1 && <MetroMarkers route={points} routeTrip={routeTrip} color={color}/>}
       </MapContainer>
     </div>
   );
