@@ -13,8 +13,8 @@ const customIcon = new Icon({
   iconAnchor: [22, 30]
 });
 
-export default function MetroMarkers({route}) {
-  const points = route.map(position => position.coordinates);
+export default function MetroMarkers({route, routeTrip, color}) {
+  const points = [];
   //beware, hardcoded!!!
   return (
     <>
