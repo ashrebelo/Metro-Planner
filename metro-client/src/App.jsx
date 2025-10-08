@@ -41,7 +41,7 @@ function App() {
         setEndStation={setEndStation}
         setRouteTrip={setRouteTrip}
         setDisplayRoute={setDisplayRoute}/>
-      {displayRoute && <TripRoute routeTrip={routeTrip} color={color}/>}
+      {displayRoute && <TripRoute routeTrip={routeTrip}/>}
     </div>
   );
 }
