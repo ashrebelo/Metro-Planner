@@ -9,7 +9,7 @@ import './Map.css';
 // See https://www.youtube.com/watch?v=jD6813wGdBA if you want to customize the map
 // further (optional)
 
-export default function MapExample() {
+export default function MapExample({routeTrip, color}) {
   const points =  [ 
     {
       name: 'one',
