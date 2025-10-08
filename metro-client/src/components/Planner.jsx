@@ -5,6 +5,7 @@ function Planner(
   {stations, startStation, setStartStation, endStation, setEndStation, setDisplayRoute}
 ) {
   const [routeStation, setRouteStation] = useState([]);
+  const [endDisplay, setEndDisplay] = useState(false);
   
   async function handleStartChange(event) {
     const selectedName = event.target.value;
