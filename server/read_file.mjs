@@ -60,7 +60,7 @@ export function getStationsOnLine(routeId) {
 
 export function getRoute(start_station_id, end_station_id) {
   if(!stations || stations.lenght === 0) {
-    return []
+    return [];
   }
   const start_station = stations.find(s => s.id == start_station_id);
   const end_station = stations.find(s => s.id == end_station_id);
