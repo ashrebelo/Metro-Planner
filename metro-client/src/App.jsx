@@ -3,7 +3,7 @@ import './App.css';
 import Planner from './components/Planner';
 import TripRoute from './components/TripRoute';
 
-const colors = ['green', 'orange', 'null', 'yellow', 'blue'];
+
 
 function App() {
   const [backendData, setBackendData] = useState([{}]);
@@ -11,9 +11,6 @@ function App() {
   const [startStation, setStartStation] = useState('');
   const [endStation, setEndStation] = useState('');
   const [displayRoute, setDisplayRoute] = useState(false);
-
-  const routeId = parseInt(backendData[0].route_id, 10);
-  const color = colors[routeId - 1];
 
   useEffect(() => {
     fetch('/api/s').then(
