@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './Planner.css';
 
 function Planner(
-  {stations, startStation, setStartStation, endStation, setEndStation}
+  {stations, startStation, setStartStation, endStation, setEndStation, setDisplayRoute}
 ) {
   const [routeStation, setRouteStation] = useState([]);
   
