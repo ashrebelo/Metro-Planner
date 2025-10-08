@@ -12,7 +12,8 @@ function TripRoute({routeTrip}) {
   const colorIndex = routeTrip[0].route_id;
   return (
     <>
-      <Stations routeTrip={routeTrip} color={color}/>
+      <Stations routeTrip={routeTrip} color={colors[colorIndex]}/>
+      <MapExample routeTrip={routeTrip} color={colors[colorIndex]}/>
     </>  
   );
 }
