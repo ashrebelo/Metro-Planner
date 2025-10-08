@@ -25,7 +25,7 @@ function Planner(
   }
 
   const filteredStations = routeStation.filter(
-    (s) => s.stop_name !== startStation
+    (s) => s.stop_name !== startStation.stop_name
   );
   
   return (
