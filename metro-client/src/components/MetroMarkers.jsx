@@ -42,9 +42,14 @@ export default function MetroMarkers({routeTrip, color}) {
       {routeTrip.map((point, index) => {
         const p = [routeTrip[index].coordinates[1], routeTrip[index].coordinates[0]];
         points.push(p);
-        return <Marker key={index} position={p} icon={customIcon}>
-          <Popup>{handleStationInfo}</Popup>
-        </Marker>;
+        return <div key={`div-${index}`} onClick={handleStationInfo}> 
+          <Marker key={index} position={p} icon={customIcon} >
+            <Popup>
+              <p>{stationInfo}</p>
+            </Popup>
+          </Marker>
+        </div>;
+        
       })}
       <Polyline pathOptions={{color: color}} positions={points} />
     </>
