@@ -1,0 +1,8 @@
+#station-info {
+    border: 2px solid black;
+    padding: 1em;
+}
+
+#station-info-title {
+    font-weight: bold;
+}
