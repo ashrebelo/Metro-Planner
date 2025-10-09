@@ -22,7 +22,7 @@ export default function MetroMarkers({routeTrip, color}) {
         const p = [routeTrip[index].coordinates[1], routeTrip[index].coordinates[0]];
         points.push(p);
         return <Marker key={index} position={p} icon={customIcon}>
-          <Popup>{handleStationInfo}</Popup>
+          <Popup>{point.stop_name}</Popup>
         </Marker>;
       })}
       <Polyline pathOptions={{color: color}} positions={points} />
