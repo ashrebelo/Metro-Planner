@@ -7,6 +7,10 @@ import {
 
 import markerImage from '../assets/marker-icon.png';
 
+const wikiUrl = 
+  `https://en.wikipedia.org/w/api.php?action=query
+  &format=json&origin=*&list=search&formatversion=2&srsearch=`;
+
 const customIcon = new Icon({
   iconUrl: markerImage,
   iconSize: [38, 38],
