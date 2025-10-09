@@ -20,11 +20,23 @@ const customIcon = new Icon({
 
 export default function MetroMarkers({routeTrip, color}) {
   const points = [];
-  function handleStationInfo(event) {
-
+  const [stationInfo, setStationInfo] = useState('');
+  async function handleStationInfo(event) {
+    console.log('handle gets called');
+    const selectedName = event.target.value;
+    const selectedStation = routeTrip.find(st => st.stop_name === selectedName);
+    const uri = getURI(selectedStation.stop_name);
+    console.log('uri');
+    console.log(uri);
+    const res = await fetch(wikiUrl + uri, 'ashley.rebelo@dawsoncollege.qc.ca');
+    setStationInfo(res);
   }
 
-
+  function getURI(name) {
+    const justName = name.replace('Station', '');
+    const endcode = encodeURI(justName + 'station');
+    return endcode;
+  }
   return (
     <>
       {routeTrip.map((point, index) => {
