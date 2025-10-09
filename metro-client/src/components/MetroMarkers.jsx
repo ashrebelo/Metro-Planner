@@ -15,14 +15,18 @@ const customIcon = new Icon({
 
 export default function MetroMarkers({routeTrip, color}) {
   const points = [];
-  //beware, hardcoded!!!
+  function handleStationInfo(event) {
+
+  }
+
+
   return (
     <>
       {routeTrip.map((point, index) => {
         const p = [routeTrip[index].coordinates[1], routeTrip[index].coordinates[0]];
         points.push(p);
         return <Marker key={index} position={p} icon={customIcon}>
-          <Popup>{point.stop_name}</Popup>
+          <Popup>{handleStationInfo}</Popup>
         </Marker>;
       })}
       <Polyline pathOptions={{color: color}} positions={points} />
