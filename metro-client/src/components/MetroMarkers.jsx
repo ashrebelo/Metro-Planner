@@ -9,9 +9,11 @@ import './StationInfo.css';
 
 import markerImage from '../assets/marker-icon.png';
 
-const wikiUrl = 
+const wikiApiUrl = 
   `https://en.wikipedia.org/w/api.php?action=query
 &format=json&origin=*&list=search&formatversion=2&srsearch=`;
+
+const wikiUrl = 'http://en.wikipedia.org/w/index.php?curid=';
 
 const customIcon = new Icon({
   iconUrl: markerImage,
