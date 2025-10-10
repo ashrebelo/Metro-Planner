@@ -34,3 +34,7 @@
     width: 5px;
     height: 5px;
 }
+
+.select {
+    border: 3px black solid;
+}
