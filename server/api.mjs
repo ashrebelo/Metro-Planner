@@ -57,8 +57,9 @@ app.get('/api/routetrip/:startStationId/:endStationId', (req, res) => {
  * default
  * https://expressjs.com/en/starter/static-files.html
  */
-const path = require('path');
-app.use(express.static(path.join(__dirname, '../metro-client/public')));
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, '../metro-client/dist/index.html'));
+});
 
 /**
  * only starts the server if the file read was successful
