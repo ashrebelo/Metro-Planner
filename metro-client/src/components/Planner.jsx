@@ -38,10 +38,10 @@ function Planner(
     setStartStation(selectedStation);
     const res = await fetch(`/api/end/${selectedStation.route_id}`);
     const data = await res.json();
-    setEndStation('');
     setRouteStation(data);
     setRouteTrip([{}]);
     setDisplayRoute(false);
+    setEndStation('');
     setEndDisplay(true);
   }
   /**
