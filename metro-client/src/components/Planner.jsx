@@ -52,7 +52,7 @@ function Planner(
    */
   function handleEndStation(event) {
     const selectedName = event.target.value;
-    const selectedStation = filteredStations.find(st => st.stop_name === selectedName);
+    const selectedStation = filteredStations.find(st => st.stopName === selectedName);
     setEndStation(selectedStation);
   }
 
@@ -60,7 +60,7 @@ function Planner(
   let filteredStations = [];
   if(startStation !== undefined) {
     filteredStations = routeStation.filter(
-      (s) => s.stop_name !== startStation.stop_name
+      (s) => s.stopName !== startStation.stopName
     );
   }
   
@@ -73,13 +73,13 @@ function Planner(
         <label htmlFor="start-stations">Start Station:</label>
         <select 
           name="start-stations"
-          value={startStation?.stop_name || ''}
+          value={startStation?.stopName || ''}
           onChange={handleStartChange}>
           <option value="" disabled hidden>-- Select Start --</option>
           {stations.map((station) => {
-            return <option key={`${station.route_id}-${station.id}-${station.stop_name}`} 
-              value={station.stop_name}>
-              {station.stop_name}
+            return <option key={`${station.routeId}-${station.id}-${station.stopName}`} 
+              value={station.stopName}>
+              {station.stopName}
             </option>;
           })}
         </select>
@@ -89,13 +89,13 @@ function Planner(
           <label htmlFor="end-stations">End Station:</label>
           <select 
             name="end-stations"
-            value={endStation?.stop_name || ''}
+            value={endStation?.stopName || ''}
             onChange={handleEndStation}>
             <option value="" disabled hidden>-- Select End --</option>
             {filteredStations.map((station, index) => {
               return <option key={index} 
-                value={station.stop_name}>
-                {station.stop_name}
+                value={station.stopName}>
+                {station.stopName}
               </option>;
             })}
           </select>

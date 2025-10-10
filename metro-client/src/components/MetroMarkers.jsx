@@ -39,7 +39,7 @@ export default function MetroMarkers({routeTrip, color, setSelectedStation}) {
    */
   async function handleStationInfo(event) {
     const selectedName = event;
-    const uri = getURI(selectedName.stop_name);
+    const uri = getURI(selectedName.stopName);
     const apiUrl = wikiApiUrl + uri;
     const res = await fetch(apiUrl);
     const res1 = await res.json();
@@ -74,7 +74,7 @@ export default function MetroMarkers({routeTrip, color, setSelectedStation}) {
             eventHandlers={{click: () => handleStationInfo(routeTrip[index])}}>
             <Popup>
               <div id="station-info">
-                <p id="station-info-title">{routeTrip[index].stop_name}</p>
+                <p id="station-info-title">{routeTrip[index].stopName}</p>
                 {stationInfo[0]}
                 <a href={stationInfo[1]}>more info</a>
               </div>

@@ -12,7 +12,7 @@ function Station({station, color, selectClass}) {
   return (
     <section className="station">
       <section className={`${color} ${selectClass}`} id="block"></section>
-      <p>{station.stop_name}</p>
+      <p>{station.stopName}</p>
     </section>
   );
 }
