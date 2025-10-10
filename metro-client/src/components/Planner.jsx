@@ -97,7 +97,7 @@ function Planner(
           <label htmlFor="end-stations">End Station:</label>
           <select 
             name="end-stations"
-            defaultValue={endStation || ''}
+            value={endStation?.stop_name || ''}
             onChange={handleEndStation}>
             <option>-- Select End --</option>
             {filteredStations.map((station, index) => {
