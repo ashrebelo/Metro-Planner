@@ -48,6 +48,7 @@ export default function MetroMarkers({routeTrip, color, setSelectedStation}) {
     const info = res2.replace(regex, '');
     const url = wikiUrl + res1.query.search[0].pageid;
     setStationInfo([info, url]);
+    setSelectedStation(event);
   }
 
   /**
