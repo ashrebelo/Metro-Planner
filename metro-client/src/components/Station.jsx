@@ -9,7 +9,7 @@ import './Stations.css';
 function Station({station, color, selectClass}) {
   return (
     <section className="station">
-      <section className={color} id="block" ></section>
+      <section className={`${color} ${selectClass}`} id="block"></section>
       <p>{station.stop_name}</p>
     </section>
   );
