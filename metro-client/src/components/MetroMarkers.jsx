@@ -25,7 +25,7 @@ const customIcon = new Icon({
  * @param {*} param0 
  * @returns 
  */
-export default function MetroMarkers({route, routeTrip, color}) {
+export default function MetroMarkers({routeTrip, color}) {
   const points = [];
   const [stationInfo, setStationInfo] = useState('');
   async function handleStationInfo(event) {
