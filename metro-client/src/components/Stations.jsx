@@ -12,7 +12,11 @@ function Stations({routeTrip, color, selectedStation}) {
   return (
     <section id="stations">
       {routeTrip.map((stat, index) =>
-        <Station station={stat} color={color} key={index} />
+        <Station 
+          station={stat} 
+          color={color} 
+          key={index}
+          selectClass={stat === selectedStation ? 'select' : ''} />
       )}
     </section>
   );
