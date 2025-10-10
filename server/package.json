@@ -4,6 +4,7 @@
   "description": "",
   "main": "api.mjs",
   "scripts": {
+    "start": "api",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node --watch api.mjs"
   },
