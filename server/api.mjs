@@ -53,7 +53,7 @@ app.use(express.static(path.join(__dirname, '../metro-client/public')));
 async function startServer() {
   try {
     const stmData = await readGeoJSON();
-    if(!stmData || stmData.lenght == 0) {
+    if(!stmData || stmData.length == 0) {
       process.exit(1);
     }
     server = app.listen(port, () => {
