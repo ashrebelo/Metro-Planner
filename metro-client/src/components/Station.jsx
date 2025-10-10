@@ -1,4 +1,3 @@
-import Block from './Block';
 import './Stations.css';
 
 /**
@@ -10,7 +9,7 @@ import './Stations.css';
 function Station({station, color}) {
   return (
     <section className="station">
-      <Block color={color}/>
+      <section className={color} id="block" ></section>
       <p>{station.stop_name}</p>
     </section>
   );
