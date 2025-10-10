@@ -77,16 +77,5 @@ export function getRoute(start_station_id, end_station_id) {
     const temp = listOfStations.slice(startIndex, endIndex);
     list = temp.reverse();
   }
-  const list = listOfStations.slice(startIndex, endIndex);
   return list;
 }
-
-//usused for testing
-//REMOVE BEFORE SUBMISSION 
-// async function main() {
-//   await readGeoJSON();
-//   const route = getRoute("38", "43");
-//   console.log(route.length);
-// }
-
-// main();
