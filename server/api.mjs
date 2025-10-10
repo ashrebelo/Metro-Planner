@@ -67,7 +67,7 @@ app.use((req, res) => {
 async function startServer() {
   try {
     const stmData = await readGeoJSON();
-    if(!stmData || stmData.length == 0) {
+    if(!stmData || stmData.length === 0) {
       process.exit(1);
     }
     server = app.listen(port, () => {
