@@ -30,7 +30,7 @@ app.get('/api/end/:routeId', (req, res) => {
   if(!routeId || typeof routeId !== 'string') {
     return [];
   }
-  const result = getStationsOnLine(route_id);
+  const result = getStationsOnLine(routeId);
   res.json(result);
 });
 
