@@ -55,8 +55,8 @@ function createStationObjects() {
       data.properties.stop_url,
       data.properties.route_id,
       data.geometry.coordinates
-    ))
-  })
+    ));
+  });
 }
 
 /**
