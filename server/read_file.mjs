@@ -66,7 +66,7 @@ function createStationObjects() {
 export function getStations() {
   if(stations.length !== 0) {
     const routeIds = ['1', '2', '4', '5'];
-    return stations.filter(value => routeIds.includes(value.route_id));
+    return stations.filter(value => routeIds.includes(value.routeId));
   }
   return [];
 }
@@ -78,7 +78,7 @@ export function getStations() {
  */
 export function getStationsOnLine(routeId) {
   if(stations.length === 0) return [];
-  return stations.filter(value => String(value.route_id) === String(routeId));
+  return stations.filter(value => String(value.routeId) === String(routeId));
 }
 
 /**
