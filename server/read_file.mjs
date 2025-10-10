@@ -12,13 +12,13 @@ const stations = [];
  * create a station with only nessarcy information
  */
 class StationItem {
-  constructor(stop_code, stop_id, stop_name, stop_url, route_id, coordinates) {
-    this.code = stop_code,
-    this.id = stop_id,
-    this.stop_name = stop_name
-    this.url = stop_url,
-    this.route_id = route_id,
-    this.coordinates = coordinates
+  constructor(stopCode, stopId, stopName, stopUrl, routeId, coordinates) {
+    this.code = stopCode,
+    this.id = stopId,
+    this.stopName = stopName,
+    this.url = stopUrl,
+    this.routeId = routeId,
+    this.coordinates = coordinates;
   }
 }
 
