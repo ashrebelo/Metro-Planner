@@ -59,21 +59,12 @@ export function getStationsOnLine(routeId) {
 }
 
 export function getRoute(start_station_id, end_station_id) {
-  if(!stations || stations.lenght === 0) {
-    return [];
-  }
+  if(!stations || stations.lenght === 0) {return [];}
   const start_station = stations.find(s => s.id == start_station_id);
   const end_station = stations.find(s => s.id == end_station_id);
-
-  if(!start_station || !end_station) {
-    return [];
-  }
-
+  if(!start_station || !end_station) {return [];}
   const listOfStations = getStationsOnLine(start_station.route_id);
-  if(!listOfStations || listOfStations.length === 0) {
-    return [];
-  }
-
+  if(!listOfStations || listOfStations.length === 0) {return [];}
   let startIndex, endIndex;
   if(start_station.code < end_station.code) {
     startIndex = listOfStations.findIndex(s => s.id == start_station.id);
