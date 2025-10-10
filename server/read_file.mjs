@@ -6,7 +6,7 @@ const fileName = 'stm_arrets_sig.geojson';
 const _filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(_filename);
 let stmData = [];
-let stations = [];
+const stations = [];
 /**
  * StationItem class
  * create a station with only nessarcy information
