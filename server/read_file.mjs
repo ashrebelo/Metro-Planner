@@ -83,29 +83,30 @@ export function getStationsOnLine(routeId) {
 
 /**
  * using the start and end station id it slices a list of the station on the route
- * @param start_station_id refers to the station id of the start station
- * @param end_station_id refers to the station id of the end station
+ * @param startStationId refers to the station id of the start station
+ * @param endStationId refers to the station id of the end station
  * @returns a list of the trip
  */
-export function getRoute(start_station_id, end_station_id) {
-  if(!stations || stations.length === 0) {return [];}
-
-  const start_station = stations.find(s => s.id == start_station_id);
-  const end_station = stations.find(s => s.id == end_station_id);
-
-  if(!start_station || !end_station) {return [];}
-
-  const listOfStations = getStationsOnLine(start_station.route_id);
-
-  if(!listOfStations || listOfStations.length === 0) {return [];}
-
-  const startIndex = listOfStations.findIndex(s => s.id == start_station.id);
-  const endIndex = listOfStations.findIndex(s => s.id == end_station.id);
+export function getRoute(startStationId, endStationId) {
+  if(!stations || stations.length === 0) {
+    return [];
+  }
+  const startStation = stations.find(s => s.id === startStationId);
+  const endStation = stations.find(s => s.id === endStationId);
+  if(!startStation || !endStation) {
+    return [];
+  }
+  const listOfStations = getStationsOnLine(startStation.routeId);
+  if(!listOfStations || listOfStations.length === 0) {
+    return [];
+  }
+  const startIndex = listOfStations.findIndex(s => s.id === startStation.id);
+  const endIndex = listOfStations.findIndex(s => s.id === endStation.id);
   let route;
   if(startIndex < endIndex) {
-    list = listOfStations.slice(startIndex, endIndex + 1);
+    route = listOfStations.slice(startIndex, endIndex + 1);
   }else {
-    list = listOfStations.slice(endIndex, startIndex + 1).reverse();
+    route = listOfStations.slice(endIndex, startIndex + 1).reverse();
   }
-  return list;
+  return route;
 }
