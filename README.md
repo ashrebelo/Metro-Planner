@@ -5,17 +5,16 @@ Express + React app
 ### Description: 
 This website allows you to select a starting and ending metro station. After selection, an interactive map displays all the stations along the route, with markers for each one and a line connecting them. You can click on any marker to view more information about that station.
 #### On Load
-<img src="image-1.png" width="500">
+<img src="imgs/image-1.png" width="500">
 
 #### Select Start
-<img src="image-2.png" width="500">
+<img src="imgs/image-2.png" width="500">
 
 #### Select End
-<img src="image-3.png" width="600">
+<img src="imgs/image-3.png" width="600">
 
 #### Select Maker
-
-
+<img src="imgs/image-4.png" width="600">
 
 ## Requirements
 - Metro trip planner
@@ -61,19 +60,21 @@ npm run dev
 
 ### Just the server
 
-'''
+```
 cd server
 node api.mjs
-'''
+```
 
 ### Client and Server
 
 
-'''
+
+```
 cd metro-client
 npm run build
 cd ..
 cd server
 node api.mjs
-'''
+```
+
 
