@@ -1,8 +1,21 @@
-# A2 Metro Trip Planner
+# A2 Metro Trip Planner Ash Rebelo
 
 Express + React app
 
-Description: This website allows you to select a starting and ending metro station. After selection, an interactive map displays all the stations along the route, with markers for each one and a line connecting them. You can click on any marker to view more information about that station.
+### Description: 
+This website allows you to select a starting and ending metro station. After selection, an interactive map displays all the stations along the route, with markers for each one and a line connecting them. You can click on any marker to view more information about that station.
+#### On Load
+<img src="image-1.png" width="500">
+
+#### Select Start
+<img src="image-2.png" width="500">
+
+#### Select End
+<img src="image-3.png" width="600">
+
+#### Select Maker
+
+
 
 ## Requirements
 - Metro trip planner
@@ -26,6 +39,8 @@ There are two directories in the __root__ of the project.
 * The server responds to API calls and serves the __built__ React app.
 
 There are 3 package.json files -- see what `scripts` they define.
+<br>
+<img src="image.png" width="300">
 
 ## Setup
 
@@ -55,10 +70,10 @@ node api.mjs
 
 
 '''
-cd server
-node api.mjs
-cd ..
 cd metro-client
 npm run build
+cd ..
+cd server
+node api.mjs
 '''
 
