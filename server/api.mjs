@@ -30,11 +30,8 @@ app.get('/api/end/:route_id', (req, res) => {
  * return json
  */
 app.get('/api/routetrip/:start_station_id/:end_station_id', (req, res) => {
-  const {start_station_id, end_station_id } = req.params;
-  if(typeof start_station_id !== 'number') {
-    return [];
-  }
-  if(typeof end_station_id !== 'number') {
+  const {start_station_id, end_station_id } = Number(req.params);
+  if(isNaN(start_station_id) && isNaN(end_station_id)) {
     return [];
   }
   const start = start_station_id.toString()
