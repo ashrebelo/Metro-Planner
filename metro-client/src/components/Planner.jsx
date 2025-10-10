@@ -81,7 +81,7 @@ function Planner(
         <label htmlFor="start-stations">Start Station:</label>
         <select 
           name="start-stations"
-          defaultValue={startStation || ''}
+          value={startStation?.stop_name || ''}
           onChange={handleStartChange}>
           <option>-- Select Start --</option>
           {stations.map((station) => {
