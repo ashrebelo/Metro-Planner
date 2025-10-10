@@ -10,15 +10,10 @@ import './Planner.css';
  * @param endStation the selected end station
  * @param setEndStation set the endStation with useState
  * @param setRouteTrip set the start to end route, a list
- * @param setDisplayRoute set display to true when the trip is set
  * @returns the planner section
  */
 function Planner(
-  {stations, 
-    startStation, setStartStation, 
-    endStation, setEndStation, 
-    setRouteTrip, 
-    setDisplayRoute}
+  {stations, startStation, setStartStation, endStation, setEndStation, setRouteTrip}
 ) {
   const [routeStation, setRouteStation] = useState([]);
   const [endDisplay, setEndDisplay] = useState(false);
@@ -37,7 +32,6 @@ function Planner(
       setStartStation('');
       setEndStation('');
       setEndDisplay(false);
-      setDisplayRoute(false);
       setRouteTrip([]);
       return;
     }
@@ -49,7 +43,6 @@ function Planner(
     setRouteStation(data);
     setEndDisplay(true);
     setEndStation('');
-    setDisplayRoute(false);
     setRouteTrip([{}]);
   }
   /**
@@ -61,7 +54,6 @@ function Planner(
     const selectedName = event.target.value;
     const selectedStation = filteredStations.find(st => st.stop_name === selectedName);
     setEndStation(selectedStation);
-    setDisplayRoute(true);
   }
 
   /*create filter list of station on the line excluding the start station */
