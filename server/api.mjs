@@ -38,14 +38,18 @@ app.get('/api/end/:routeId', (req, res) => {
  * using the start and end station ids if find the route
  * return json
  */
-app.get('/api/routetrip/:start_station_id/:end_station_id', (req, res) => {
-  const {start_station_id, end_station_id } = Number(req.params);
-  if(isNaN(start_station_id) && isNaN(end_station_id)) {
+app.get('/api/routetrip/:startStationId/:endStationId', (req, res) => {
+  const {startStationId, endStationId } = req.params;
+
+  if(!startStationId || typeof startStationId !== 'string') {
     return [];
   }
-  const start = start_station_id.toString()
-  const end = end_station_id.toString();
-  const result = getRoute(start_station_id, end_station_id);
+  if(!endStationId || typeof endStationId !== 'string') {
+    return [];
+  }
+  const start = startStationId.toString();
+  const end = endStationId.toString();
+  const result = getRoute(start, end);
   res.json(result);
 });
 
