@@ -14,7 +14,10 @@ function TripRoute({routeTrip}) {
     4: 'yellow', 
     5: 'blue'
   };
-  const colorIndex = routeTrip[0].route_id;
+  let colorIndex;
+  if(routeTrip.length > 1) {
+    colorIndex = routeTrip[0].route_id;
+  }
   return (
     <>
       <Stations routeTrip={routeTrip} color={colors[colorIndex]}/>
