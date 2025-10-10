@@ -32,7 +32,7 @@ export default function MapExample({routeTrip, color}) {
           attribution={attribution}
           url={tileUrl}
         />
-        {routeTrip.length > 1 && <MetroMarkers route={points} routeTrip={routeTrip} color={color}/>}
+        {routeTrip.length > 1 && <MetroMarkers routeTrip={routeTrip} color={color}/>}
       </MapContainer>
     </div>
   );
