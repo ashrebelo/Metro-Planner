@@ -66,12 +66,16 @@ export function getRoute(start_station_id, end_station_id) {
   const listOfStations = getStationsOnLine(start_station.route_id);
   if(!listOfStations || listOfStations.length === 0) {return [];}
   let startIndex, endIndex;
+  let list;
   if(start_station.code < end_station.code) {
     startIndex = listOfStations.findIndex(s => s.id == start_station.id);
     endIndex = listOfStations.findIndex(s => s.id == end_station.id) + 1;
+    list = listOfStations.slice(startIndex, endIndex);
   }else {
     startIndex = listOfStations.findIndex(s => s.id == end_station.id);
     endIndex = listOfStations.findIndex(s => s.id == start_station.id) + 1;
+    const temp = listOfStations.slice(startIndex, endIndex);
+    list = temp.reverse();
   }
   const list = listOfStations.slice(startIndex, endIndex);
   return list;
