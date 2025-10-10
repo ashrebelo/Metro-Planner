@@ -1,4 +1,4 @@
-
+import { useState } from 'react';
 import MapExample from './MapExample';
 import Stations from './Stations';
 
@@ -8,6 +8,7 @@ import Stations from './Stations';
  * @returns Stations and Map components
  */
 function TripRoute({routeTrip}) {
+  const [selectedStation, setSelectedStation] = useState('');
   const colors = {
     1 : 'green', 
     2: 'orange', 
@@ -24,7 +25,7 @@ function TripRoute({routeTrip}) {
       <MapExample 
         routeTrip={routeTrip} 
         color={colors[colorIndex]} 
-        setStartStation={setStartStation}/>
+        setStartStation={setSelectedStation}/>
     </>  
   );
 }
