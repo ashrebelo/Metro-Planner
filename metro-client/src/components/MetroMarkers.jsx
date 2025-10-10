@@ -28,11 +28,12 @@ const customIcon = new Icon({
 export default function MetroMarkers({routeTrip, color}) {
   const points = [];
   const [stationInfo, setStationInfo] = useState('');
+  
   async function handleStationInfo(event) {
     const selectedName = event;
     const uri = getURI(selectedName.stop_name);
-    const url = wikiUrl + uri;
-    const res = await fetch(url);
+    const apiUrl = wikiApiUrl + uri;
+    const res = await fetch(apiUrl);
     const res1 = await res.json();
     const res2 = res1.query.search[0].snippet;
     const regex = /(<([^>]+)>)/gi;
