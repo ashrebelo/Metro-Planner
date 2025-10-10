@@ -14,7 +14,6 @@ function App() {
   const [routeTrip, setRouteTrip] = useState([{}]);
   const [startStation, setStartStation] = useState('');
   const [endStation, setEndStation] = useState('');
-  const [displayRoute, setDisplayRoute] = useState(false);
 
   useEffect(() => {
     fetch('/api/s').then(
@@ -27,10 +26,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if(displayRoute !== false) {
+    if(startStation && endStation) {
       getRouteTrip();
     }
-  }, [displayRoute]);
+  }, [startStation, endStation]);
 
   /**
    * fetch from the api using startStation and endStation
@@ -47,9 +46,8 @@ function App() {
         setStartStation={setStartStation}
         endStation={endStation}
         setEndStation={setEndStation}
-        setRouteTrip={setRouteTrip}
-        setDisplayRoute={setDisplayRoute}/>
-      {displayRoute && <TripRoute routeTrip={routeTrip}/>}
+        setRouteTrip={setRouteTrip}/>
+      {startStation && endStation && <TripRoute routeTrip={routeTrip}/>}
     </div>
   );
 }
