@@ -10,23 +10,6 @@ import './Map.css';
 // further (optional)
 
 export default function MapExample({routeTrip, color}) {
-  const points =  [ 
-    {
-      name: 'one',
-      coordinates: [45.446465999988021, -73.603118],
-      color: 'lime'
-    },
-    {
-      name: 'two',
-      coordinates: [45.501342315993, -73.60383900042255],
-      color: 'lime'
-    },
-    {
-      name: 'three',
-      coordinates: [45.520830163089066, -73.58006390089389],
-      color: 'lime'
-    },
-  ];
   const attribution = 
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
   const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
