@@ -9,24 +9,7 @@ import './Map.css';
 // See https://www.youtube.com/watch?v=jD6813wGdBA if you want to customize the map
 // further (optional)
 
-export default function MapExample() {
-  const points =  [ 
-    {
-      name: 'one',
-      coordinates: [45.446465999988021, -73.603118],
-      color: 'lime'
-    },
-    {
-      name: 'two',
-      coordinates: [45.501342315993, -73.60383900042255],
-      color: 'lime'
-    },
-    {
-      name: 'three',
-      coordinates: [45.520830163089066, -73.58006390089389],
-      color: 'lime'
-    },
-  ];
+export default function MapExample({routeTrip, color, setSelectedStation}) {
   const attribution = 
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
   const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
@@ -49,7 +32,9 @@ export default function MapExample() {
           attribution={attribution}
           url={tileUrl}
         />
-        <MetroMarkers route={points}/> 
+        {/* if there is nothing in routeTrip the markers do not run */}
+        {routeTrip.length > 1 && <MetroMarkers routeTrip={routeTrip} color={color}
+          setSelectedStation={setSelectedStation}/>}
       </MapContainer>
     </div>
   );

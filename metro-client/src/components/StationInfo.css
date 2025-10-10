@@ -1,0 +1,10 @@
+#station-info {
+    border: 2px solid black;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+#station-info-title {
+    font-weight: bold;
+}

@@ -1,0 +1,40 @@
+#stations {
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.station {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1em;
+}
+
+.green {
+    background-color: green;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.orange {
+    background-color: orange;
+}
+
+#block.select {
+    border: 3px red solid;
+}
+#block {
+    border: 1px solid black;
+    padding: 1em;
+    width: 5px;
+    height: 5px;
+}
