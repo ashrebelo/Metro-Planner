@@ -1,5 +1,7 @@
 import express from 'express';
 import { readGeoJSON, getStations, getStationsOnLine, getRoute } from './read_file.mjs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const app = express();
 const port = 3000;
