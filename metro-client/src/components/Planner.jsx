@@ -65,9 +65,13 @@ function Planner(
   }
 
   /*create filter list of station on the line excluding the start station */
-  const filteredStations = routeStation.filter(
-    (s) => s.stop_name !== startStation.stop_name
-  );
+  let filteredStations = [];
+  if(startStation !== undefined) {
+    filteredStations = routeStation.filter(
+      (s) => s.stop_name !== startStation.stop_name
+    );
+  }
+  
   
   return (
     <section id="trip-planner">
