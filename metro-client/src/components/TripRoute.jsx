@@ -25,7 +25,7 @@ function TripRoute({routeTrip}) {
       <MapExample 
         routeTrip={routeTrip} 
         color={colors[colorIndex]} 
-        setStartStation={setSelectedStation}/>
+        setSelectedStation={setSelectedStation}/>
     </>  
   );
 }
