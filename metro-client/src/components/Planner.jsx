@@ -83,7 +83,7 @@ function Planner(
           name="start-stations"
           value={startStation?.stop_name || ''}
           onChange={handleStartChange}>
-          <option>-- Select Start --</option>
+          <option value="">-- Select Start --</option>
           {stations.map((station) => {
             return <option key={`${station.route_id}-${station.id}-${station.stop_name}`} 
               value={station.stop_name}>
