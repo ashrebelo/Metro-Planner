@@ -17,7 +17,7 @@ function TripRoute({routeTrip}) {
   };
   let colorIndex;
   if(routeTrip.length > 1) {
-    colorIndex = routeTrip[0].route_id;
+    colorIndex = routeTrip[0].routeId;
   }
   return (
     <>
