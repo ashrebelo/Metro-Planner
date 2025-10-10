@@ -7,6 +7,13 @@ const app = express();
 const port = 3000;
 let server;
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Serve built React app (dist)
+app.use(express.static(path.join(__dirname, '../metro-client/dist')));
+
+
 /**
  * gets all the stations
  */
