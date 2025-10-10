@@ -17,8 +17,8 @@ app.get('/api/s', (req, res) => {
  * using the station's route id, it keeps all the other stations with the same route id
  */
 app.get('/api/end/:route_id', (req, res) => {
-  const { route_id } = req.params;
-  if(typeof route_id !== 'number') {
+  const { route_id } = Number(req.params);
+  if(isNaN(route_id)) {
     return [];
   }
   const result = getStationsOnLine(route_id);
