@@ -6,7 +6,7 @@ import './Stations.css';
  * @param color the color of the line the station is on
  * @returns a section with a block section and station name
  */
-function Station({station, color}) {
+function Station({station, color, selectClass}) {
   return (
     <section className="station">
       <section className={color} id="block" ></section>
