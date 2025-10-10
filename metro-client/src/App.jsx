@@ -27,7 +27,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if(displayRoute !== null) {
+    if(displayRoute !== false) {
       getRouteTrip();
     }
   }, [displayRoute]);
