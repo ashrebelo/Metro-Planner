@@ -85,23 +85,24 @@ export function getStationsOnLine(routeId) {
  * @returns a list of the trip
  */
 export function getRoute(start_station_id, end_station_id) {
-  if(!stations || stations.lenght === 0) {return [];}
+  if(!stations || stations.length === 0) {return [];}
+
   const start_station = stations.find(s => s.id == start_station_id);
   const end_station = stations.find(s => s.id == end_station_id);
+
   if(!start_station || !end_station) {return [];}
+
   const listOfStations = getStationsOnLine(start_station.route_id);
+
   if(!listOfStations || listOfStations.length === 0) {return [];}
-  let startIndex, endIndex;
-  let list;
-  if(start_station.code < end_station.code) {
-    startIndex = listOfStations.findIndex(s => s.id == start_station.id);
-    endIndex = listOfStations.findIndex(s => s.id == end_station.id) + 1;
-    list = listOfStations.slice(startIndex, endIndex);
+
+  const startIndex = listOfStations.findIndex(s => s.id == start_station.id);
+  const endIndex = listOfStations.findIndex(s => s.id == end_station.id);
+  let route;
+  if(startIndex < endIndex) {
+    list = listOfStations.slice(startIndex, endIndex + 1);
   }else {
-    startIndex = listOfStations.findIndex(s => s.id == end_station.id);
-    endIndex = listOfStations.findIndex(s => s.id == start_station.id) + 1;
-    const temp = listOfStations.slice(startIndex, endIndex);
-    list = temp.reverse();
+    list = listOfStations.slice(endIndex, startIndex + 1).reverse();
   }
   return list;
 }
