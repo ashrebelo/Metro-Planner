@@ -43,14 +43,14 @@ function Planner(
     }
     const selectedName = event.target.value;
     const selectedStation = stations.find(st => st.stop_name === selectedName);
-    setStartStation(selectedStation);
     const res = await fetch(`/api/end/${selectedStation.route_id}`);
     const data = await res.json();
+    setStartStation(selectedStation);
     setRouteStation(data);
-    setRouteTrip([{}]);
-    setDisplayRoute(false);
-    setEndStation('');
     setEndDisplay(true);
+    setEndStation('');
+    setDisplayRoute(false);
+    setRouteTrip([{}]);
   }
   /**
    * takes select station and sets endStation
