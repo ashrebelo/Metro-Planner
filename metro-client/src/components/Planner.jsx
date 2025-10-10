@@ -33,6 +33,14 @@ function Planner(
    * @param event refer to the station selected
    */
   async function handleStartChange(event) {
+    if(event.target.value === '') {
+      setStartStation('');
+      setEndStation('');
+      setEndDisplay(false);
+      setDisplayRoute(false);
+      setRouteTrip([]);
+      return;
+    }
     const selectedName = event.target.value;
     const selectedStation = stations.find(st => st.stop_name === selectedName);
     setStartStation(selectedStation);
