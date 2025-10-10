@@ -99,7 +99,7 @@ function Planner(
             name="end-stations"
             value={endStation?.stop_name || ''}
             onChange={handleEndStation}>
-            <option>-- Select End --</option>
+            <option value="">-- Select End --</option>
             {filteredStations.map((station, index) => {
               return <option key={index} 
                 value={station.stop_name}>
