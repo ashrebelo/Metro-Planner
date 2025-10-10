@@ -34,7 +34,7 @@ export async function readGeoJSON() {
       const content = await fs.readFile(filePath, 'utf8');
       const geoData = await JSON.parse(content);
       stmData =  geoData.features || geoData;
-      createStationObjects()
+      createStationObjects();
     }catch(error) {
       console.error('Failed File Reading', error);
       stmData = [];
