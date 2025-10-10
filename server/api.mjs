@@ -82,9 +82,10 @@ async function startServer() {
  * end gracefully
  */
 process.on('SIGTERM', () => {
-  console.debug('SIGTERM signal reveived: closing HTTP server')
+  console.debug('SIGTERM signal reveived: closing HTTP server');
   server.close(() => {
-    console.debug('HTTP server closed')
-  })
-})
+    console.debug('HTTP server closed');
+  });
+});
+
 startServer();
