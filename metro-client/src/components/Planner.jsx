@@ -15,10 +15,8 @@ import './Planner.css';
  */
 function Planner(
   {stations, 
-    startStation, 
-    setStartStation, 
-    endStation, 
-    setEndStation, 
+    startStation, setStartStation, 
+    endStation, setEndStation, 
     setRouteTrip, 
     setDisplayRoute}
 ) {
