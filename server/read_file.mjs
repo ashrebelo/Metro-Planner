@@ -4,7 +4,10 @@ import path from 'path';
 const fileName = 'stm_arrets_sig.geojson';
 let stmData = [];
 let stations = [];
-
+/**
+ * StationItem class
+ * create a station with only nessarcy information
+ */
 class StationItem {
   constructor(stop_code, stop_id, stop_name, stop_url, route_id, coordinates) {
     this.code = stop_code,
@@ -16,6 +19,11 @@ class StationItem {
   }
 }
 
+/**
+ * read the file using file name at the top
+ * call createStationObjects to create the station objects
+ * @returns 
+ */
 export async function readGeoJSON() {
   if(stmData.length === 0) {
     try {
@@ -32,6 +40,9 @@ export async function readGeoJSON() {
   return stmData;
 }
 
+/**
+ * using stmData create StationItem objects and pushes them to stations
+ */
 function createStationObjects() {
   stmData.forEach((data) => {
     stations.push(new StationItem(
@@ -45,6 +56,10 @@ function createStationObjects() {
   })
 }
 
+/**
+ * filter everything except metro station and returns filtered list
+ * @returns filtered list of only metro stations
+ */
 export function getStations() {
   if(stations.length !== 0) {
     const routeIds = ['1', '2', '4', '5'];
@@ -53,11 +68,22 @@ export function getStations() {
   return [];
 }
 
+/**
+ * usilng the routeId it filter stations for stations on the same line
+ * @param routeId refers to a metro line
+ * @returns filter list of all station with routeId
+ */
 export function getStationsOnLine(routeId) {
   if(stations.length === 0) return [];
   return stations.filter(value => String(value.route_id) === String(routeId));
 }
 
+/**
+ * using the start and end station id it slices a list of the station on the route
+ * @param start_station_id refers to the station id of the start station
+ * @param end_station_id refers to the station id of the end station
+ * @returns a list of the trip
+ */
 export function getRoute(start_station_id, end_station_id) {
   if(!stations || stations.lenght === 0) {return [];}
   const start_station = stations.find(s => s.id == start_station_id);
