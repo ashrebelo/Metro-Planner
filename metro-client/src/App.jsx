@@ -44,7 +44,8 @@ function App() {
     <div className="App">
       <Planner stations={backendData}
         startStation={startStation}
-        setStartStation={setStartStation} 
+        setStartStation={setStartStation}
+        endStation={endStation}
         setEndStation={setEndStation}
         setRouteTrip={setRouteTrip}
         setDisplayRoute={setDisplayRoute}/>
