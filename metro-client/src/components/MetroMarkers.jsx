@@ -59,7 +59,8 @@ export default function MetroMarkers({routeTrip, color}) {
             <Popup>
               <div id="station-info">
                 <p id="station-info-title">{routeTrip[index].stop_name}</p>
-                {stationInfo}
+                {stationInfo[0]}
+                <a href={stationInfo[1]}>more info</a>
               </div>
             </Popup>
           </Marker>
