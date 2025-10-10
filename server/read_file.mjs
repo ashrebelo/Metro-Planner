@@ -3,6 +3,8 @@ import path from 'path';
 import { fileURLToPath } from 'node:url';
 
 const fileName = 'stm_arrets_sig.geojson';
+const _filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(_filename);
 let stmData = [];
 let stations = [];
 /**
