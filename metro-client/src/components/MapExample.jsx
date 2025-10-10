@@ -32,6 +32,7 @@ export default function MapExample({routeTrip, color}) {
           attribution={attribution}
           url={tileUrl}
         />
+        {/* if there is nothing in routeTrip the markers do not run */}
         {routeTrip.length > 1 && <MetroMarkers routeTrip={routeTrip} color={color}/>}
       </MapContainer>
     </div>

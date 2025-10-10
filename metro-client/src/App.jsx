@@ -3,8 +3,12 @@ import './App.css';
 import Planner from './components/Planner';
 import TripRoute from './components/TripRoute';
 
-
-
+/**
+ * Holds the useState for varables needed for both planner and TripRoute
+ * Fetches to routeTrip using api
+ * @returns Planner component
+ * @returns TripRoute component only if displayRoute is true
+ */
 function App() {
   const [backendData, setBackendData] = useState([{}]);
   const [routeTrip, setRouteTrip] = useState([{}]);
@@ -28,6 +32,9 @@ function App() {
     }
   }, [displayRoute]);
 
+  /**
+   * fetch from the api using startStation and endStation
+   */
   async function getRouteTrip() {
     const res = await fetch(`/api/routetrip/${startStation.id}/${endStation.id}`);
     const data = await res.json();

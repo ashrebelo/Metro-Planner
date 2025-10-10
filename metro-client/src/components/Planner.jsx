@@ -1,6 +1,18 @@
 import { useState } from 'react';
 import './Planner.css';
 
+/**
+ * fetches from the api when start station is select
+ * sets displayRoute to true when an end station is selected
+ * @param stations refers to all the stations from the api
+ * @param startStation the selected start station
+ * @param setStartStation sets the startStation with useState
+ * @param endStation the selected end station
+ * @param setEndStation set the endStation with useState
+ * @param setRouteTrip set the start to end route, a list
+ * @param setDisplayRoute set display to true when the trip is set
+ * @returns the planner section
+ */
 function Planner(
   {stations, 
     startStation, 
@@ -13,6 +25,15 @@ function Planner(
   const [routeStation, setRouteStation] = useState([]);
   const [endDisplay, setEndDisplay] = useState(false);
   
+  /**
+   * takes the station select and sets the startStation
+   * fetches the line the startStation is on from the api and sets routeStation
+   * sets routeTrip to be empty
+   * sets displayRoute to be false
+   * sets endStation to be empty
+   * sets endDisplay to be true
+   * @param event refer to the station selected
+   */
   async function handleStartChange(event) {
     const selectedName = event.target.value;
     const selectedStation = stations.find(st => st.stop_name === selectedName);
@@ -25,6 +46,11 @@ function Planner(
     setDisplayRoute(false);
     setEndDisplay(true);
   }
+  /**
+   * takes select station and sets endStation
+   * sets displayRoute to true
+   * @param event refer to end station that was selected
+   */
   function handleEndStation(event) {
     const selectedName = event.target.value;
     const selectedStation = filteredStations.find(st => st.stop_name === selectedName);
@@ -32,6 +58,7 @@ function Planner(
     setDisplayRoute(true);
   }
 
+  /*create filter list of station on the line excluding the start station */
   const filteredStations = routeStation.filter(
     (s) => s.stop_name !== startStation.stop_name
   );

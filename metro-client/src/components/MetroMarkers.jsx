@@ -21,14 +21,22 @@ const customIcon = new Icon({
   iconAnchor: [22, 30]
 });
 /**
- * 
- * @param {*} param0 
- * @returns 
+ * Determines where the makers need to be and the line between
+ * fetches from wiki api for info about stations
+ * @param routeTrip list of the stations from start to end 
+ * @param color color of the line the stations or on
+ * @returns Makers and a line to be displayed on the map
  */
 export default function MetroMarkers({routeTrip, color}) {
   const points = [];
   const [stationInfo, setStationInfo] = useState('');
   
+  /**
+   * takes the marker select, using the station fetches from the wiki api
+   * also creates a link, user can use to get more info about the stations
+   * using the info from the api and the created url it sets setStationInfo
+   * @param event refers to the maker that was selected
+   */
   async function handleStationInfo(event) {
     const selectedName = event;
     const uri = getURI(selectedName.stop_name);
@@ -42,6 +50,13 @@ export default function MetroMarkers({routeTrip, color}) {
     setStationInfo([info, url]);
   }
 
+  /**
+   * moves the word station to the end of the string
+   * replaces of the spaces with '_'
+   * encodeds the string
+   * @param name of the station
+   * @returns an encode station name
+   */
   function getURI(name) {
     const justName = name.replace('Station ', '');
     const addUnderScore = justName.replaceAll(' ', '_');

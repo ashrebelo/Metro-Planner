@@ -2,6 +2,11 @@
 import MapExample from './MapExample';
 import Stations from './Stations';
 
+/**
+ * Determines the color of the route and passes it to Station and Map component
+ * @param {routeTrip} param0 
+ * @returns Stations and Map components
+ */
 function TripRoute({routeTrip}) {
   const colors = {
     1 : 'green', 
