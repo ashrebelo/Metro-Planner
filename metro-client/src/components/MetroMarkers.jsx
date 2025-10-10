@@ -27,7 +27,7 @@ const customIcon = new Icon({
  * @param color color of the line the stations or on
  * @returns Makers and a line to be displayed on the map
  */
-export default function MetroMarkers({routeTrip, color}) {
+export default function MetroMarkers({routeTrip, color, setSelectedStation}) {
   const points = [];
   const [stationInfo, setStationInfo] = useState('');
   
