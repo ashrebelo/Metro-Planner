@@ -1,5 +1,6 @@
 import * as fs from 'node:fs/promises';
 import path from 'path';
+import { fileURLToPath } from 'node:url';
 
 const fileName = 'stm_arrets_sig.geojson';
 let stmData = [];
