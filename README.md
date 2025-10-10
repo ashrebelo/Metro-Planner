@@ -2,7 +2,7 @@
 
 Express + React app
 
-Description: 
+Description: This website allows you to select a starting and ending metro station. After selection, an interactive map displays all the stations along the route, with markers for each one and a line connecting them. You can click on any marker to view more information about that station.
 
 ## Requirements
 - Metro trip planner
@@ -46,10 +46,19 @@ npm run dev
 
 ### Just the server
 
-> Fill this in 
+'''
+cd server
+node api.mjs
+'''
 
 ### Client and Server
 
 
-> Fill this in 
+'''
+cd server
+node api.mjs
+cd ..
+cd metro-client
+npm run build
+'''
 
