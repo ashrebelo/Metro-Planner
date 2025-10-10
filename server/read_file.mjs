@@ -30,7 +30,7 @@ class StationItem {
 export async function readGeoJSON() {
   if(stmData.length === 0) {
     try {
-      const filePath = path.join('./data', fileName);
+      const filePath = path.join(dirname, 'data', fileName);
       const content = await fs.readFile(filePath, 'utf8');
       const geoData = await JSON.parse(content);
       stmData =  geoData.features || geoData;
