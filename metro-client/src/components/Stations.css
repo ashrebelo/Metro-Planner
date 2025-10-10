@@ -29,13 +29,12 @@
     background-color: orange;
 }
 
+#block.select {
+    border: 3px red solid;
+}
 #block {
     border: 1px solid black;
     padding: 1em;
     width: 5px;
     height: 5px;
-}
-
-.select {
-    border: 3px black solid;
 }
