@@ -35,10 +35,10 @@ function TripRoute({routeTrip, error}) {
 
   return (
     <>
-      <Stations routeTrip={routeTrip} color={colors[colorIndex]} selectedStation={selectedStation}/>
+      <Stations routeTrip={routeTrip} color={color} selectedStation={selectedStation}/>
       <MapExample 
         routeTrip={routeTrip} 
-        color={colors[colorIndex]} 
+        color={color} 
         setSelectedStation={setSelectedStation}/>
     </>  
   );
