@@ -58,7 +58,7 @@ app.get('/api/routetrip/:startStationId/:endStationId', (req, res) => {
  * https://expressjs.com/en/starter/static-files.html
  */
 app.use((req, res) => {
-  res.sendFile(path.join(__dirname, '../metro-client/dist/index.html'));
+  return res.sendFile(path.join(__dirname, '../metro-client/dist/index.html'));
 });
 
 /**
