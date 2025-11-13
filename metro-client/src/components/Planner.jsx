@@ -15,7 +15,7 @@ import './Planner.css';
 function Planner(
   {stations, startStation, setStartStation, endStation, setEndStation, setRouteTrip}
 ) {
-  const [routeStation, setRouteStation] = useState([]);
+  const [routeStations, setRouteStations] = useState([]);
   const [endDisplay, setEndDisplay] = useState(false);
   
   /**
