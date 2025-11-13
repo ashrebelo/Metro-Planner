@@ -26,12 +26,16 @@ app.get('/api/s', (req, res) => {
  * using the station's route id, it keeps all the other stations with the same route id
  */
 app.get('/api/end/:routeId', (req, res) => {
-  const { routeId } = req.params;
-  if(!routeId || typeof routeId !== 'string') {
-    return [];
+  try {
+    const { routeId } = req.params;
+    if(!routeId || typeof routeId !== 'string') {
+      return res.status(400).json({error: 'Route id invaild'});
+    }
+    const result = getStationsOnLine(routeId);
+    return res.status(200).json(result);
+  }catch (err) {
+    res.status(500).json({error: 'Server error' + err.message});
   }
-  const result = getStationsOnLine(routeId);
-  res.json(result);
 });
 
 /**
