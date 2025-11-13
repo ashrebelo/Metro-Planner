@@ -66,7 +66,7 @@ function createStationObjects() {
 export function getStations() {
   if(stations.length !== 0) {
     const routeIds = ['1', '2', '4', '5'];
-    return stations.filter(value => routeIds.includes(value.routeId));
+    return stations.filter(value => routeIds.includes(value.routeId)).map(s => s.stopName);
   }
   return [];
 }
