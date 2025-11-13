@@ -38,19 +38,20 @@ app.get('/api/end/:routeId', (req, res) => {
  * using the start and end station ids if find the route
  * return json
  */
-app.get('/api/routetrip/:startStationId/:endStationId', (req, res) => {
-  const {startStationId, endStationId } = req.params;
-
-  if(!startStationId || typeof startStationId !== 'string') {
-    return [];
+app.get('/api/routetrip/:startName/:endName', (req, res) => {
+  try {
+    const {startName, endName } = req.params;
+    if(!startName || !endName) {
+      return res.status(400).json({error: 'Stations name Invaild'});
+    }
+    const result = getRouteByName(startName, endName);
+    if(!result || result.length === 0) {
+      return res.status(404).json({error : 'No Route Found'});
+    }
+    return res.status(200).json(result);
+  }catch (err) {
+    res.status(500).json({error: 'Server error' + err.message});
   }
-  if(!endStationId || typeof endStationId !== 'string') {
-    return [];
-  }
-  const start = startStationId.toString();
-  const end = endStationId.toString();
-  const result = getRoute(start, end);
-  res.json(result);
 });
 
 /**
