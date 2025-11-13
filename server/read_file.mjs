@@ -110,3 +110,25 @@ export function getRoute(startStationId, endStationId) {
   }
   return route;
 }
+
+export function getRouteByName(startName, endName) {
+  if(!stations || stations.length === 0) return [];
+  const startStation = stations.find(s => s.stopName === startName);
+  const endStation = stations.find(s => s.stopName === endName);
+  if(!startStation || !endStation) return [];
+  const line = stations.filter(s => s.routeId === startStation.routeId);
+  const startIndex = line.findIndex(s => s.stopName === startStation.stopName);
+  const endIndex = line.findIndex(s => s.stopName === endStation.stopName);
+  if(startIndex === -1 || endIndex === -1) return [];
+  let route;
+  if(startIndex < endIndex) {
+    route = line.slice(startIndex, endIndex + 1);
+  }else {
+    route = line.slice(endIndex, startIndex + 1).reverse;
+  }
+  return route;
+}
+
+export function getStationByName(name) {
+  return stations.find(s => s.stopName === name || null);
+}
