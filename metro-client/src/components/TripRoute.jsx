@@ -7,7 +7,7 @@ import Stations from './Stations';
  * @param {routeTrip} param0 
  * @returns Stations and Map components
  */
-function TripRoute({routeTrip}) {
+function TripRoute({routeTrip, error}) {
   const [selectedStation, setSelectedStation] = useState('');
   const colors = {
     1 : 'green', 
