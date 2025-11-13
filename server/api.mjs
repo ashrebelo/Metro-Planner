@@ -1,5 +1,11 @@
 import express from 'express';
-import { readGeoJSON, getStations, getStationsOnLine, getRoute } from './read_file.mjs';
+import { 
+  readGeoJSON, 
+  getStations, 
+  getStationsOnLine,
+  getStationByName,
+  getRouteByName
+} from './read_file.mjs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
