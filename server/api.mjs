@@ -19,7 +19,26 @@ app.use(express.static(path.join(__dirname, '../metro-client/dist')));
  */
 app.get('/api/s', (req, res) => {
   const result = getStations();
-  res.json(result);
+  if(result === null) {
+    return res.status(404).json({error: 'No data found'});
+  }
+  return res.status(200).json(result);
+});
+
+app.get('/api/station/:name', (req, res) => {
+  try {
+    const name = req.params.name;
+    if(!name || typeof name !== 'string') {
+      return res.status(400).json({error: 'Station name invaild'});
+    }
+    const station = getStationByName(name);
+    if(!station) {
+      return res.status(404).json({error: 'Station not Found'});
+    }
+    return res.status(200).json(station);
+  } catch(err) {
+    res.status(500).json({error: 'Server error' + err.message});
+  }
 });
 
 /**
