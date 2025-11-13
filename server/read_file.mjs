@@ -78,7 +78,7 @@ export function getStations() {
  */
 export function getStationsOnLine(routeId) {
   if(stations.length === 0) return [];
-  return stations.filter(value => String(value.routeId) === String(routeId));
+  return stations.filter(value => String(value.routeId) === String(routeId)).map(s => s.stopName);
 }
 
 /**
