@@ -112,8 +112,8 @@ function Planner(
             <option value="" disabled hidden>-- Select End --</option>
             {filteredStations.map((station, index) => {
               return <option key={index} 
-                value={station.stopName}>
-                {station.stopName}
+                value={station}>
+                {station}
               </option>;
             })}
           </select>
