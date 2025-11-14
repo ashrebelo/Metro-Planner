@@ -26,12 +26,6 @@ function App() {
     );
   }, []);
 
-  useEffect(() => {
-    if(startStation && endStation) {
-      getRouteTrip();
-    }
-  }, [startStation, endStation]);
-
   /**
    * fetch from the api using startStation and endStation
    */
