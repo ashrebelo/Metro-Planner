@@ -62,10 +62,20 @@ function Planner(
    * sets displayRoute to true
    * @param event refer to end station that was selected
    */
-  function handleEndStation(event) {
-    const selectedName = event.target.value;
-    const selectedStation = filteredStations.find(st => st.stopName === selectedName);
-    setEndStation(selectedStation);
+  async function handleEndStation(event) {
+    try {
+      const selectedName = event.target.value;
+      const selectedStation = await fetch(`/api/station/${selectedName}`);
+      if(!selectedStation.ok) throw new Error('Station not found');
+      const station = await selectedStation.json();
+      setEndStation(station);
+    } catch(err) {
+      return (
+        <div className="error-box">
+          {err || 'Planner error'}
+        </div>
+      );
+    }
   }
 
   /*create filter list of station on the line excluding the start station */
