@@ -28,22 +28,34 @@ function Planner(
    * @param event refer to the station selected
    */
   async function handleStartChange(event) {
-    if(event.target.value === '') {
-      setStartStation('');
-      setEndStation('');
-      setEndDisplay(false);
+    try {
+      const selectedName = event.target.value;
+      if(selectedName === '') {
+        setStartStation(null);
+        setEndStation(null);
+        setEndDisplay(false);
+        setRouteStations([]);
+        setRouteTrip([]);
+        return;
+      }
+      const resStaion = await fetch(`/api/station/${selectedName}`);
+      if(!resStaion.ok) throw new Error('Station not found');
+      const fullStation = await resStaion.json();
+      const res = await fetch(`/api/end/${fullStation.routeId}`);
+      if(!res.ok) throw new Error('Line not found');
+      const stationsOnLine = await res.json();
+      setStartStation(fullStation);
+      setRouteStations(stationsOnLine);
+      setEndDisplay(true);
+      setEndStation(null);
       setRouteTrip([]);
-      return;
+    } catch(err) {
+      return (
+        <div className="error-box">
+          {err || 'Planner error'}
+        </div>
+      );
     }
-    const selectedName = event.target.value;
-    const selectedStation = stations.find(st => st.stopName === selectedName);
-    const res = await fetch(`/api/end/${selectedStation.routeId}`);
-    const data = await res.json();
-    setStartStation(selectedStation);
-    setRouteStation(data);
-    setEndDisplay(true);
-    setEndStation('');
-    setRouteTrip([{}]);
   }
   /**
    * takes select station and sets endStation
