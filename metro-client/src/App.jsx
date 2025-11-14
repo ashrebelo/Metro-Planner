@@ -10,10 +10,11 @@ import TripRoute from './components/TripRoute';
  * @returns TripRoute component only if displayRoute is true
  */
 function App() {
-  const [backendData, setBackendData] = useState([{}]);
-  const [routeTrip, setRouteTrip] = useState([{}]);
-  const [startStation, setStartStation] = useState('');
-  const [endStation, setEndStation] = useState('');
+  const [backendData, setBackendData] = useState([]);
+  const [routeTrip, setRouteTrip] = useState([]);
+  const [startStation, setStartStation] = useState(null);
+  const [endStation, setEndStation] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch('/api/s').then(
@@ -25,20 +26,34 @@ function App() {
     );
   }, []);
 
-  useEffect(() => {
-    if(startStation && endStation) {
-      getRouteTrip();
-    }
-  }, [startStation, endStation]);
-
   /**
    * fetch from the api using startStation and endStation
    */
-  async function getRouteTrip() {
-    const res = await fetch(`/api/routetrip/${startStation.id}/${endStation.id}`);
-    const data = await res.json();
-    setRouteTrip(data);
-  }
+  useEffect(() => {
+    const fetchRoute = async () => {
+      setError(null);
+      if(startStation && endStation) {
+        try {
+          const res = await fetch(`/api/routetrip/${startStation.stopName}/${endStation.stopName}`);
+          if(!res.ok) {
+            const message = await res.text();
+            setError(message || 'Could not get Route');
+            setRouteTrip([]);
+            return;
+          }
+          const data = await res.json();
+          if(!data || data.length === 0) {
+            setError('No Route found for the selected Stations');
+          }
+          setRouteTrip(data);
+        } catch (err) {
+          setError(`Failed to contact server ${err}`);
+        }
+      }
+    };
+    fetchRoute();
+  }, [startStation, endStation]);
+  
   return (
     <div className="App">
       <Planner stations={backendData}
@@ -46,8 +61,10 @@ function App() {
         setStartStation={setStartStation}
         endStation={endStation}
         setEndStation={setEndStation}
-        setRouteTrip={setRouteTrip}/>
-      {startStation && endStation && <TripRoute routeTrip={routeTrip}/>}
+        setRouteTrip={setRouteTrip}
+        setError={setError}/>
+      {error && <div className="error-box">{error}</div>}
+      {startStation && endStation && <TripRoute routeTrip={routeTrip} error={error}/>}
     </div>
   );
 }

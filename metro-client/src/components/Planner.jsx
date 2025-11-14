@@ -15,7 +15,7 @@ import './Planner.css';
 function Planner(
   {stations, startStation, setStartStation, endStation, setEndStation, setRouteTrip}
 ) {
-  const [routeStation, setRouteStation] = useState([]);
+  const [routeStations, setRouteStations] = useState([]);
   const [endDisplay, setEndDisplay] = useState(false);
   
   /**
@@ -28,42 +28,63 @@ function Planner(
    * @param event refer to the station selected
    */
   async function handleStartChange(event) {
-    if(event.target.value === '') {
-      setStartStation('');
-      setEndStation('');
-      setEndDisplay(false);
+    try {
+      const selectedName = event.target.value;
+      if(selectedName === '') {
+        setStartStation(null);
+        setEndStation(null);
+        setEndDisplay(false);
+        setRouteStations([]);
+        setRouteTrip([]);
+        return;
+      }
+      const resStaion = await fetch(`/api/station/${selectedName}`);
+      if(!resStaion.ok) throw new Error('Station not found');
+      const fullStation = await resStaion.json();
+      const res = await fetch(`/api/end/${fullStation.routeId}`);
+      if(!res.ok) throw new Error('Line not found');
+      const stationsOnLine = await res.json();
+      setStartStation(fullStation);
+      setRouteStations(stationsOnLine);
+      setEndDisplay(true);
+      setEndStation(null);
       setRouteTrip([]);
-      return;
+    } catch(err) {
+      return (
+        <div className="error-box">
+          {err || 'Planner error'}
+        </div>
+      );
     }
-    const selectedName = event.target.value;
-    const selectedStation = stations.find(st => st.stopName === selectedName);
-    const res = await fetch(`/api/end/${selectedStation.routeId}`);
-    const data = await res.json();
-    setStartStation(selectedStation);
-    setRouteStation(data);
-    setEndDisplay(true);
-    setEndStation('');
-    setRouteTrip([{}]);
   }
   /**
    * takes select station and sets endStation
    * sets displayRoute to true
    * @param event refer to end station that was selected
    */
-  function handleEndStation(event) {
-    const selectedName = event.target.value;
-    const selectedStation = filteredStations.find(st => st.stopName === selectedName);
-    setEndStation(selectedStation);
+  async function handleEndStation(event) {
+    try {
+      const selectedName = event.target.value;
+      const selectedStation = await fetch(`/api/station/${selectedName}`);
+      if(!selectedStation.ok) throw new Error('Station not found');
+      const station = await selectedStation.json();
+      setEndStation(station);
+    } catch(err) {
+      return (
+        <div className="error-box">
+          {err || 'Planner error'}
+        </div>
+      );
+    }
   }
 
   /*create filter list of station on the line excluding the start station */
   let filteredStations = [];
-  if(startStation !== undefined) {
-    filteredStations = routeStation.filter(
-      (s) => s.stopName !== startStation.stopName
+  if(startStation?.stopName) {
+    filteredStations = routeStations.filter(
+      (name) => name !== startStation.stopName
     );
   }
-  
   
   return (
     <section id="trip-planner">
@@ -77,10 +98,7 @@ function Planner(
           onChange={handleStartChange}>
           <option value="" disabled hidden>-- Select Start --</option>
           {stations.map((station) => {
-            return <option key={`${station.routeId}-${station.id}-${station.stopName}`} 
-              value={station.stopName}>
-              {station.stopName}
-            </option>;
+            return <option key={station} value={station}>{station}</option>;
           })}
         </select>
       </div>
@@ -94,8 +112,8 @@ function Planner(
             <option value="" disabled hidden>-- Select End --</option>
             {filteredStations.map((station, index) => {
               return <option key={index} 
-                value={station.stopName}>
-                {station.stopName}
+                value={station}>
+                {station}
               </option>;
             })}
           </select>

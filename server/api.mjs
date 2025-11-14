@@ -1,5 +1,11 @@
 import express from 'express';
-import { readGeoJSON, getStations, getStationsOnLine, getRoute } from './read_file.mjs';
+import { 
+  readGeoJSON, 
+  getStations, 
+  getStationsOnLine,
+  getStationByName,
+  getRouteByName
+} from './read_file.mjs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -19,38 +25,62 @@ app.use(express.static(path.join(__dirname, '../metro-client/dist')));
  */
 app.get('/api/s', (req, res) => {
   const result = getStations();
-  res.json(result);
+  if(result === null) {
+    return res.status(404).json({error: 'No data found'});
+  }
+  return res.status(200).json(result);
+});
+
+app.get('/api/station/:name', (req, res) => {
+  try {
+    const name = req.params.name;
+    if(!name || typeof name !== 'string') {
+      return res.status(400).json({error: 'Station name invaild'});
+    }
+    const station = getStationByName(name);
+    if(!station) {
+      return res.status(404).json({error: 'Station not Found'});
+    }
+    return res.status(200).json(station);
+  } catch(err) {
+    res.status(500).json({error: 'Server error' + err.message});
+  }
 });
 
 /**
  * using the station's route id, it keeps all the other stations with the same route id
  */
 app.get('/api/end/:routeId', (req, res) => {
-  const { routeId } = req.params;
-  if(!routeId || typeof routeId !== 'string') {
-    return [];
+  try {
+    const { routeId } = req.params;
+    if(!routeId || typeof routeId !== 'string') {
+      return res.status(400).json({error: 'Route id invaild'});
+    }
+    const result = getStationsOnLine(routeId);
+    return res.status(200).json(result);
+  }catch (err) {
+    res.status(500).json({error: 'Server error' + err.message});
   }
-  const result = getStationsOnLine(routeId);
-  res.json(result);
 });
 
 /**
  * using the start and end station ids if find the route
  * return json
  */
-app.get('/api/routetrip/:startStationId/:endStationId', (req, res) => {
-  const {startStationId, endStationId } = req.params;
-
-  if(!startStationId || typeof startStationId !== 'string') {
-    return [];
+app.get('/api/routetrip/:startName/:endName', (req, res) => {
+  try {
+    const {startName, endName } = req.params;
+    if(!startName || !endName) {
+      return res.status(400).json({error: 'Stations name Invaild'});
+    }
+    const result = getRouteByName(startName, endName);
+    if(!result || result.length === 0) {
+      return res.status(404).json({error : 'No Route Found'});
+    }
+    return res.status(200).json(result);
+  }catch (err) {
+    res.status(500).json({error: 'Server error' + err.message});
   }
-  if(!endStationId || typeof endStationId !== 'string') {
-    return [];
-  }
-  const start = startStationId.toString();
-  const end = endStationId.toString();
-  const result = getRoute(start, end);
-  res.json(result);
 });
 
 /**
@@ -58,7 +88,7 @@ app.get('/api/routetrip/:startStationId/:endStationId', (req, res) => {
  * https://expressjs.com/en/starter/static-files.html
  */
 app.use((req, res) => {
-  res.sendFile(path.join(__dirname, '../metro-client/dist/index.html'));
+  return res.sendFile(path.join(__dirname, '../metro-client/dist/index.html'));
 });
 
 /**
