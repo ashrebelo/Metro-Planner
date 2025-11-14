@@ -61,8 +61,10 @@ function App() {
         setStartStation={setStartStation}
         endStation={endStation}
         setEndStation={setEndStation}
-        setRouteTrip={setRouteTrip}/>
-      {startStation && endStation && <TripRoute routeTrip={routeTrip}/>}
+        setRouteTrip={setRouteTrip}
+        setError={setError}/>
+      {error && <div className="error-box">{error}</div>}
+      {startStation && endStation && <TripRoute routeTrip={routeTrip} error={error}/>}
     </div>
   );
 }
