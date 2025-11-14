@@ -29,11 +29,31 @@ function App() {
   /**
    * fetch from the api using startStation and endStation
    */
-  async function getRouteTrip() {
-    const res = await fetch(`/api/routetrip/${startStation.id}/${endStation.id}`);
-    const data = await res.json();
-    setRouteTrip(data);
-  }
+  useEffect(() => {
+    const fetchRoute = async () => {
+      setError(null);
+      if(startStation && endStation) {
+        try {
+          const res = await fetch(`/api/routetrip/${startStation.stopName}/${endStation.stopName}`);
+          if(!res.ok) {
+            const message = await res.text();
+            setError(message || 'Could not get Route');
+            setRouteTrip([]);
+            return;
+          }
+          const data = await res.json();
+          if(!data || data.length === 0) {
+            setError('No Route found for the selected Stations');
+          }
+          setRouteTrip(data);
+        } catch (err) {
+          setError(`Failed to contact server ${err}`);
+        }
+      }
+    };
+    fetchRoute();
+  }, [startStation, endStation]);
+  
   return (
     <div className="App">
       <Planner stations={backendData}
