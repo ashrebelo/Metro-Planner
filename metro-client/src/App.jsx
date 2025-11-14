@@ -10,10 +10,11 @@ import TripRoute from './components/TripRoute';
  * @returns TripRoute component only if displayRoute is true
  */
 function App() {
-  const [backendData, setBackendData] = useState([{}]);
-  const [routeTrip, setRouteTrip] = useState([{}]);
-  const [startStation, setStartStation] = useState('');
-  const [endStation, setEndStation] = useState('');
+  const [backendData, setBackendData] = useState([]);
+  const [routeTrip, setRouteTrip] = useState([]);
+  const [startStation, setStartStation] = useState(null);
+  const [endStation, setEndStation] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch('/api/s').then(
