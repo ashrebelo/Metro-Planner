@@ -80,12 +80,11 @@ function Planner(
 
   /*create filter list of station on the line excluding the start station */
   let filteredStations = [];
-  if(startStation !== undefined) {
-    filteredStations = routeStation.filter(
-      (s) => s.stopName !== startStation.stopName
+  if(startStation?.stopName) {
+    filteredStations = routeStations.filter(
+      (name) => name !== startStation.stopName
     );
   }
-  
   
   return (
     <section id="trip-planner">
