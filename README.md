@@ -2,17 +2,11 @@
 
 Express + React app
 
-Description: (briefly describe what the app does)
+Description:
+The Metro Trip Planner is a web application that allows users to plan a metro route by selecting a start station and an end station. Once both stations are chosen, the app retrieves the route between them and displays an interactive map view showing the full path, including all stops along the way. This provides a simple, visual way to explore metro connections and travel paths.
 
-## Structure
+### Images
 
-There are two directories in the __root__ of the project.
-
-* The Express server is in `server/`
-* The React app is in `metro-client/
-* The server responds to API calls and serves the __built__ React app.
-
-There are 3 package.json files -- see what `scripts` they define.
 
 ## Setup
 
@@ -32,11 +26,14 @@ npm run dev
 ```
 
 ### Just the server
-
-> Fill this in 
-
+```
+cd server
+npm run dev
+```
 ### Client and Server
-
-
-> Fill this in 
-
+```
+cd metro-client
+npm run build
+cd ../server
+npm run start
+```
